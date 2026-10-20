@@ -1,5 +1,10 @@
 # Storage benchmarks
 
+For current per-operation wall-time comparisons (commit, status, diff, branches, restore, clone,
+push/fetch/pull and maintenance), see [operation speed benchmarks](performance.md). The storage
+experiments below use different workloads and maintenance settings; their times should not be mixed
+with the new operation tables.
+
 Raw results: `benchmarks/results/v2/*.json` (one file per workload; `-depth16` files are the
 delta-depth ablation). Reproduce with:
 
@@ -80,8 +85,10 @@ Allocated-block ratios are within a few percent of the apparent ones except `tin
 
 ## Not measured
 
-Transfer bytes (no sync protocol yet), checkout/restore of a clean clone, behavior at hundreds of
-thousands of files, Windows, and variance across seeds.
+These original storage runs did not measure checkout/restore of a clean clone, hundreds of thousands
+of files, Windows, or variation across seeds. Later transfer-byte experiments are stored under
+`benchmarks/results/v3/`; the new repeated CLI/loopback speed comparison is documented separately
+in [performance.md](performance.md).
 
 ## Encrypted channel (plan step 9)
 

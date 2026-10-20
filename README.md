@@ -68,6 +68,47 @@ macOS 打开 DMG，将 RustGit 拖进「应用程序」；Windows 运行 EXE 安
 
 「共享成功」表示托管端已收到版本；其他电脑仍需拉取，文件才会更新。
 
+<!-- operation-benchmark:start -->
+## 与 Git 的操作速度对比
+
+以下是 **2026-10-20、Apple M3 / 8 GB / macOS 27.0.1** 上的 CLI 实测。使用相同的合成源码数据（起始 301 个文件、2.14 MiB），每个工具从全新仓库重复 5 轮，表中为耗时中位数；**越低越快**。Git 提交包含 `add + commit`。
+
+| 操作 | Git（ms） | RustGit（ms） | Git / RustGit |
+| --- | ---: | ---: | ---: |
+| 初始化 | 12.9 | 13.4 | 0.96× |
+| 首次提交 | 167.6 | 24.0 | 6.98× |
+| 检查状态：无修改 | 8.85 | 7.46 | 1.19× |
+| 检查状态：有修改 | 9.50 | 7.39 | 1.28× |
+| 查看工作区差异 | 8.85 | 8.17 | 1.08× |
+| 历史（11 条） | 8.02 | 5.25 | 1.53× |
+| 查看单个提交 | 8.74 | 6.30 | 1.39× |
+| 增量提交 | 22.1 | 12.3 | 1.79× |
+| 创建分支 | 7.99 | 5.46 | 1.46× |
+| 切到初始版本 | 11.1 | 8.08 | 1.37× |
+| 切回最新分支 | 11.7 | 9.26 | 1.27× |
+| 恢复单个文件 | 8.16 | 7.07 | 1.15× |
+| 暂存未提交工作 | 24.0 | 16.0 | 1.50× |
+| 恢复暂存工作 | 11.0 | 9.64 | 1.14× |
+| 撤销提交 | 13.2 | 14.8 | 0.89× |
+| 合并分支（无冲突） | 16.9 | 14.0 | 1.21× |
+| 首次发送 | 119.7 | 1648.5 | 0.07× |
+| 克隆并落盘文件 | 69.7 | 343.9 | 0.20× |
+| 增量发送 | 44.9 | 55.5 | 0.81× |
+| 获取新提交 | 40.4 | 24.0 | 1.69× |
+| 拉取并合并新提交 | 67.0 | 25.2 | 2.66× |
+| 发送：已经最新 | 15.8 | 10.7 | 1.47× |
+| 获取：已经最新 | 24.1 | 7.78 | 3.10× |
+| 拉取：已经最新 | 32.8 | 7.41 | 4.42× |
+| 完整性检查 | 49.1 | 14.9 | 3.29× |
+| 常规整理（GC） | 186.4 | 20.2 | 9.23× |
+
+`Git / RustGit` 大于 1 表示 RustGit 在此项较快，小于 1 表示 Git 较快。差异很小的项目可能处于运行波动范围内。RustGit 并非每项都更快。
+
+**数据类型会改变结果：** 64 MiB 大文件组的完整克隆为 Git 6.44 秒 / RustGit 0.69 秒；5,001 个小文件组的首次发送为 Git 0.55 秒 / RustGit 20.32 秒。前者包含局部修改的大文件历史，不能推广到所有大文件；后者暴露了 RustGit 当前的小文件首次传输开销。
+
+同步都走本机 TCP：Git 使用未加密的 `git://`，RustGit 使用身份验证和加密连接；不包含首次邀请与设备登记。完整性检查和 GC 的实现与保障范围不同，这里只比较命令耗时。结果包含进程启动开销，**不是 Windows、真实局域网或公网速度**。另测了 5,001 个小文件和 64 MiB 大文件，完整结果、每轮原始数据及复现命令见 [速度基准](docs/performance.md)。
+<!-- operation-benchmark:end -->
+
 ## 可以用服务器托管吗？
 
 **可以。服务器运行 `rgit serve`，桌面端通过邀请连接。** 服务器不需要桌面界面，也不需要一直开着你的个人电脑。适合在常开主机、Linux 服务器或具备运行条件的 NAS 上集中保存共享历史。
@@ -87,7 +128,8 @@ install -m 755 target/release/rgit "$HOME/.local/bin/rgit"
 
 # 保持相同的配置目录，服务与管理命令都使用这个目录
 export RGIT_HOME="$HOME/.local/share/rustgit-server"
-"$HOME/.local/bin/rgit" --insecure-file-keys serve   --init "$HOME/rustgit-repos/myproject.rgit" --listen 0.0.0.0:7878
+"$HOME/.local/bin/rgit" --insecure-file-keys serve \
+  --init "$HOME/rustgit-repos/myproject.rgit" --listen 0.0.0.0:7878
 ```
 
 Linux 当前需要显式使用 `--insecure-file-keys`：私钥以仅所属用户可读的文件保存，未加密；**网络连接仍然经过身份验证和加密**。请使用专用系统用户，并保护配置目录及备份。macOS 和 Windows 默认使用系统钥匙串或凭据管理器。Linux 部署步骤基于 CLI 实现，当前发布未提供 Linux 预编译包，也未完成本次 Linux 原生部署验证。
@@ -98,7 +140,9 @@ Linux 当前需要显式使用 `--insecure-file-keys`：私钥以仅所属用户
 
 ```bash
 export RGIT_HOME="$HOME/.local/share/rustgit-server"
-"$HOME/.local/bin/rgit" --insecure-file-keys   -C "$HOME/rustgit-repos/myproject.rgit" invite create   --role write --expires 24h --hint tcp://YOUR_SERVER_IP:7878
+"$HOME/.local/bin/rgit" --insecure-file-keys \
+  -C "$HOME/rustgit-repos/myproject.rgit" invite create \
+  --role write --expires 24h --hint tcp://YOUR_SERVER_IP:7878
 ```
 
 需要允许客户端访问服务器的 TCP 7878 端口；使用云服务器时，同时检查云安全组和系统防火墙。不要把 `0.0.0.0` 或 `127.0.0.1` 当成其他设备的连接地址。

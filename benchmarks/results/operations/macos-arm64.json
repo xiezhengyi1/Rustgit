@@ -1,0 +1,3984 @@
+{
+  "schema_version": 1,
+  "seed": 1,
+  "repeats": 5,
+  "environment": {
+    "platform": "macOS-27.0.1-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.9.6",
+    "git": "git version 2.54.0 (Apple Git-157)",
+    "rgit": "rgit 0.1.0",
+    "rgit_sha256": "3df6066302536b6412db119425ae527ca290139468eb956b64390f34fbb91238",
+    "started_at_utc": "2026-10-20T10:54:06.178390+00:00",
+    "load_average_start": [
+      11.83935546875,
+      8.85546875,
+      9.236328125
+    ],
+    "cpu": "Apple M3",
+    "memory_bytes": 8589934592,
+    "macos": "27.0.1",
+    "finished_at_utc": "2026-10-20T11:03:51.613101+00:00",
+    "load_average_end": [
+      7.546875,
+      7.01708984375,
+      7.75
+    ],
+    "source_commit": "2d6116cffecb128300b45e5873f6fdff99debee2"
+  },
+  "operations": {
+    "init": [
+      "init -q -b main",
+      "init"
+    ],
+    "commit_initial": [
+      "add -A; commit -q -m initial",
+      "commit -m initial"
+    ],
+    "status_clean": [
+      "status --porcelain=v1",
+      "status"
+    ],
+    "status_dirty": [
+      "status --porcelain=v1",
+      "status"
+    ],
+    "diff": [
+      "diff --no-ext-diff",
+      "diff"
+    ],
+    "log": [
+      "log -n 100 --format=medium",
+      "log -n 100"
+    ],
+    "show": [
+      "show --no-ext-diff HEAD",
+      "show HEAD"
+    ],
+    "commit_incremental": [
+      "add -A; commit -q -m incremental",
+      "commit -m incremental"
+    ],
+    "branch": [
+      "branch feature",
+      "branch feature"
+    ],
+    "switch_old": [
+      "switch -q first",
+      "switch first"
+    ],
+    "switch_back": [
+      "switch -q main",
+      "switch main"
+    ],
+    "restore_file": [
+      "restore --source HEAD~1 -- notes.txt",
+      "restore --from HEAD~1 notes.txt"
+    ],
+    "shelve": [
+      "stash push -q -m wip",
+      "shelve -m wip"
+    ],
+    "unshelve": [
+      "stash pop -q",
+      "unshelve 1"
+    ],
+    "revert": [
+      "revert --no-edit HEAD",
+      "revert HEAD"
+    ],
+    "merge": [
+      "merge -q --no-edit --no-ff feature",
+      "merge feature"
+    ],
+    "push_initial": [
+      "push -q origin main",
+      "push"
+    ],
+    "clone": [
+      "clone -q git://127.0.0.1:PORT/host.git COPY",
+      "clone tcp://127.0.0.1:PORT COPY --host-key FINGERPRINT"
+    ],
+    "push_incremental": [
+      "push -q origin main",
+      "push"
+    ],
+    "fetch_incremental": [
+      "fetch -q origin",
+      "fetch"
+    ],
+    "pull_incremental": [
+      "pull -q --no-rebase origin main",
+      "pull"
+    ],
+    "push_noop": [
+      "push -q origin main",
+      "push"
+    ],
+    "fetch_noop": [
+      "fetch -q origin",
+      "fetch"
+    ],
+    "pull_noop": [
+      "pull -q --no-rebase origin main",
+      "pull"
+    ],
+    "verify": [
+      "fsck --full",
+      "verify"
+    ],
+    "gc": [
+      "gc --quiet",
+      "gc"
+    ]
+  },
+  "method": [
+    "CLI wall-clock milliseconds, including process startup; stdout discarded; no desktop UI timing.",
+    "Git commit includes git add -A plus git commit. Identity/configuration setup is not timed.",
+    "Fresh repositories each round; identical seeded bytes and 10 pre-measurement history commits.",
+    "Five files (four in large) and notes.txt modified per step. Branches diverge before merge.",
+    "One untimed status scan; no OS cache flushing. Runs alternate tool order each round.",
+    "Real loopback TCP for both: Git daemon git:// is unencrypted; RustGit TCP is authenticated/encrypted.",
+    "Host startup, invitation/enrollment and second pull-client clone are outside timings. No network shaping.",
+    "Git automatic maintenance, signing, hooks and fsmonitor disabled; no automatic GC before explicit final GC.",
+    "Default GC and integrity checks have different implementations/scopes; compare observed command cost, not equivalent guarantees.",
+    "Warm local filesystem and loopback results do not measure Windows, WAN/LAN throughput, or cold-disk performance.",
+    "All samples retained. Medians, min/max and Git/RustGit ratios derived without removing outliers."
+  ],
+  "workloads": {
+    "source": {
+      "dataset": {
+        "files": 301,
+        "bytes": 2247010,
+        "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "order": [
+            "git",
+            "rgit"
+          ],
+          "tools": {
+            "git": {
+              "milliseconds": {
+                "init": 15.221208,
+                "commit_initial": 171.466208,
+                "status_clean": 44.311458,
+                "status_dirty": 10.395875,
+                "diff": 9.881,
+                "log": 8.438875,
+                "show": 9.169833,
+                "commit_incremental": 23.288833,
+                "branch": 8.274167,
+                "switch_old": 12.218792,
+                "switch_back": 12.344916,
+                "restore_file": 8.157583,
+                "shelve": 25.519875,
+                "unshelve": 11.476542,
+                "revert": 15.338,
+                "merge": 42.31975,
+                "push_initial": 121.869333,
+                "clone": 71.938458,
+                "push_incremental": 44.121667,
+                "fetch_incremental": 39.787,
+                "pull_incremental": 67.048209,
+                "push_noop": 15.681,
+                "fetch_noop": 23.521583,
+                "pull_noop": 32.821917,
+                "verify": 49.561791,
+                "gc": 186.403209
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            },
+            "rgit": {
+              "milliseconds": {
+                "init": 13.409208,
+                "commit_initial": 23.923583,
+                "status_clean": 7.167167,
+                "status_dirty": 7.064792,
+                "diff": 7.801041,
+                "log": 4.940541,
+                "show": 6.034042,
+                "commit_incremental": 12.326541,
+                "branch": 5.053041,
+                "switch_old": 7.942125,
+                "switch_back": 8.570583,
+                "restore_file": 6.574166,
+                "shelve": 13.912625,
+                "unshelve": 8.936708,
+                "revert": 14.791833,
+                "merge": 13.225791,
+                "push_initial": 1785.208083,
+                "clone": 328.009542,
+                "push_incremental": 56.448875,
+                "fetch_incremental": 24.944125,
+                "pull_incremental": 27.377416,
+                "push_noop": 10.648917,
+                "fetch_noop": 7.764834,
+                "pull_noop": 7.423333,
+                "verify": 14.062583,
+                "gc": 16.868667
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 2,
+          "order": [
+            "rgit",
+            "git"
+          ],
+          "tools": {
+            "rgit": {
+              "milliseconds": {
+                "init": 13.589292,
+                "commit_initial": 25.024916,
+                "status_clean": 7.742083,
+                "status_dirty": 7.394792,
+                "diff": 8.167167,
+                "log": 5.251166,
+                "show": 6.301292,
+                "commit_incremental": 12.25325,
+                "branch": 5.459542,
+                "switch_old": 8.070833,
+                "switch_back": 34.956708,
+                "restore_file": 7.409,
+                "shelve": 16.022333,
+                "unshelve": 9.63875,
+                "revert": 14.847834,
+                "merge": 13.960583,
+                "push_initial": 1648.534458,
+                "clone": 343.9355,
+                "push_incremental": 55.535291,
+                "fetch_incremental": 20.826541,
+                "pull_incremental": 24.663083,
+                "push_noop": 10.734708,
+                "fetch_noop": 7.783,
+                "pull_noop": 7.360833,
+                "verify": 14.58325,
+                "gc": 20.186542
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            },
+            "git": {
+              "milliseconds": {
+                "init": 12.214542,
+                "commit_initial": 167.196584,
+                "status_clean": 8.669041,
+                "status_dirty": 9.068708,
+                "diff": 8.443042,
+                "log": 7.714,
+                "show": 8.543917,
+                "commit_incremental": 22.068542,
+                "branch": 7.778375,
+                "switch_old": 10.740208,
+                "switch_back": 11.537292,
+                "restore_file": 8.002042,
+                "shelve": 23.0525,
+                "unshelve": 10.970458,
+                "revert": 12.5215,
+                "merge": 16.336125,
+                "push_initial": 118.930708,
+                "clone": 69.644125,
+                "push_incremental": 49.867916,
+                "fetch_incremental": 40.516541,
+                "pull_incremental": 66.140875,
+                "push_noop": 15.487083,
+                "fetch_noop": 23.983208,
+                "pull_noop": 32.628916,
+                "verify": 49.132125,
+                "gc": 219.83675
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 3,
+          "order": [
+            "git",
+            "rgit"
+          ],
+          "tools": {
+            "git": {
+              "milliseconds": {
+                "init": 13.288167,
+                "commit_initial": 167.6195,
+                "status_clean": 8.846666,
+                "status_dirty": 9.499333,
+                "diff": 8.849375,
+                "log": 7.89025,
+                "show": 8.741625,
+                "commit_incremental": 21.999917,
+                "branch": 7.987958,
+                "switch_old": 11.056875,
+                "switch_back": 11.746333,
+                "restore_file": 8.438708,
+                "shelve": 23.99725,
+                "unshelve": 11.058125,
+                "revert": 13.224,
+                "merge": 16.869541,
+                "push_initial": 120.951375,
+                "clone": 67.930084,
+                "push_incremental": 44.877333,
+                "fetch_incremental": 40.136125,
+                "pull_incremental": 65.773459,
+                "push_noop": 16.108916,
+                "fetch_noop": 25.884125,
+                "pull_noop": 32.765291,
+                "verify": 47.447292,
+                "gc": 182.243292
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            },
+            "rgit": {
+              "milliseconds": {
+                "init": 11.902541,
+                "commit_initial": 25.112792,
+                "status_clean": 7.458542,
+                "status_dirty": 7.615625,
+                "diff": 8.96175,
+                "log": 5.941167,
+                "show": 27.11125,
+                "commit_incremental": 14.933709,
+                "branch": 5.794208,
+                "switch_old": 8.693333,
+                "switch_back": 9.263292,
+                "restore_file": 7.066791,
+                "shelve": 17.246083,
+                "unshelve": 9.799917,
+                "revert": 13.9335,
+                "merge": 14.988458,
+                "push_initial": 1515.518084,
+                "clone": 325.129084,
+                "push_incremental": 54.410334,
+                "fetch_incremental": 23.959083,
+                "pull_incremental": 26.638792,
+                "push_noop": 9.5215,
+                "fetch_noop": 7.785875,
+                "pull_noop": 7.44025,
+                "verify": 17.131375,
+                "gc": 25.721125
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 4,
+          "order": [
+            "rgit",
+            "git"
+          ],
+          "tools": {
+            "rgit": {
+              "milliseconds": {
+                "init": 13.131667,
+                "commit_initial": 24.014041,
+                "status_clean": 7.162208,
+                "status_dirty": 7.287,
+                "diff": 7.853958,
+                "log": 5.030334,
+                "show": 6.142167,
+                "commit_incremental": 11.125458,
+                "branch": 4.971084,
+                "switch_old": 8.080375,
+                "switch_back": 8.644083,
+                "restore_file": 6.595583,
+                "shelve": 13.877625,
+                "unshelve": 9.22075,
+                "revert": 14.803792,
+                "merge": 12.251125,
+                "push_initial": 1622.938292,
+                "clone": 351.094834,
+                "push_incremental": 52.373542,
+                "fetch_incremental": 21.100291,
+                "pull_incremental": 25.165708,
+                "push_noop": 11.217292,
+                "fetch_noop": 7.720209,
+                "pull_noop": 7.405708,
+                "verify": 14.918542,
+                "gc": 18.867333
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            },
+            "git": {
+              "milliseconds": {
+                "init": 12.541667,
+                "commit_initial": 166.278792,
+                "status_clean": 8.408416,
+                "status_dirty": 9.138833,
+                "diff": 8.498916,
+                "log": 8.016,
+                "show": 8.66975,
+                "commit_incremental": 21.784625,
+                "branch": 7.587167,
+                "switch_old": 10.658958,
+                "switch_back": 11.127667,
+                "restore_file": 8.027709,
+                "shelve": 23.060542,
+                "unshelve": 10.877084,
+                "revert": 12.687417,
+                "merge": 16.330708,
+                "push_initial": 118.976125,
+                "clone": 69.686417,
+                "push_incremental": 45.810542,
+                "fetch_incremental": 42.39225,
+                "pull_incremental": 100.541875,
+                "push_noop": 16.167959,
+                "fetch_noop": 26.527125,
+                "pull_noop": 42.184541,
+                "verify": 49.707833,
+                "gc": 204.648042
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 5,
+          "order": [
+            "git",
+            "rgit"
+          ],
+          "tools": {
+            "git": {
+              "milliseconds": {
+                "init": 12.938208,
+                "commit_initial": 167.925291,
+                "status_clean": 9.098291,
+                "status_dirty": 10.074458,
+                "diff": 9.054041,
+                "log": 8.711083,
+                "show": 10.294791,
+                "commit_incremental": 24.945125,
+                "branch": 8.376083,
+                "switch_old": 11.105458,
+                "switch_back": 12.323,
+                "restore_file": 8.832875,
+                "shelve": 26.945041,
+                "unshelve": 10.924166,
+                "revert": 13.181208,
+                "merge": 16.858667,
+                "push_initial": 119.6765,
+                "clone": 70.532208,
+                "push_incremental": 44.839958,
+                "fetch_incremental": 40.421208,
+                "pull_incremental": 68.524291,
+                "push_noop": 15.753,
+                "fetch_noop": 24.148375,
+                "pull_noop": 32.785084,
+                "verify": 47.840083,
+                "gc": 185.579083
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            },
+            "rgit": {
+              "milliseconds": {
+                "init": 13.939708,
+                "commit_initial": 23.81,
+                "status_clean": 17.497583,
+                "status_dirty": 10.310917,
+                "diff": 8.851,
+                "log": 5.273833,
+                "show": 6.465959,
+                "commit_incremental": 17.807709,
+                "branch": 7.268041,
+                "switch_old": 13.540083,
+                "switch_back": 9.47475,
+                "restore_file": 7.145958,
+                "shelve": 22.707375,
+                "unshelve": 24.224417,
+                "revert": 17.872833,
+                "merge": 17.166916,
+                "push_initial": 1657.3615,
+                "clone": 357.632083,
+                "push_incremental": 57.894875,
+                "fetch_incremental": 25.853917,
+                "pull_incremental": 24.093625,
+                "push_noop": 10.729792,
+                "fetch_noop": 7.801917,
+                "pull_noop": 7.410375,
+                "verify": 16.962125,
+                "gc": 21.500208
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 301,
+                  "bytes": 2247010,
+                  "sha256": "245cf9253036ca13973657cf8e84351db8b66f6a5b47f166e3bba78efb8a4799"
+                },
+                "merged": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "clone": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "9b8a922f2d663d716ace1b32780a1271ff0d5140edd07e2eea6e4056193cd0aa"
+                },
+                "pull": {
+                  "files": 303,
+                  "bytes": 2247036,
+                  "sha256": "f55d980b2e0c58f79a04f291653fa20ec7181331f2c84ff5f1273ecf32777df1"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "summary": {
+        "init": {
+          "git": {
+            "median_ms": 12.938208,
+            "min_ms": 12.214542,
+            "max_ms": 15.221208,
+            "samples_ms": [
+              15.221208,
+              12.214542,
+              13.288167,
+              12.541667,
+              12.938208
+            ]
+          },
+          "rgit": {
+            "median_ms": 13.409208,
+            "min_ms": 11.902541,
+            "max_ms": 13.939708,
+            "samples_ms": [
+              13.409208,
+              13.589292,
+              11.902541,
+              13.131667,
+              13.939708
+            ]
+          },
+          "git_over_rgit": 0.9648748829908522
+        },
+        "commit_initial": {
+          "git": {
+            "median_ms": 167.6195,
+            "min_ms": 166.278792,
+            "max_ms": 171.466208,
+            "samples_ms": [
+              171.466208,
+              167.196584,
+              167.6195,
+              166.278792,
+              167.925291
+            ]
+          },
+          "rgit": {
+            "median_ms": 24.014041,
+            "min_ms": 23.81,
+            "max_ms": 25.112792,
+            "samples_ms": [
+              23.923583,
+              25.024916,
+              25.112792,
+              24.014041,
+              23.81
+            ]
+          },
+          "git_over_rgit": 6.980062206106836
+        },
+        "status_clean": {
+          "git": {
+            "median_ms": 8.846666,
+            "min_ms": 8.408416,
+            "max_ms": 44.311458,
+            "samples_ms": [
+              44.311458,
+              8.669041,
+              8.846666,
+              8.408416,
+              9.098291
+            ]
+          },
+          "rgit": {
+            "median_ms": 7.458542,
+            "min_ms": 7.162208,
+            "max_ms": 17.497583,
+            "samples_ms": [
+              7.167167,
+              7.742083,
+              7.458542,
+              7.162208,
+              17.497583
+            ]
+          },
+          "git_over_rgit": 1.1861119773811022
+        },
+        "status_dirty": {
+          "git": {
+            "median_ms": 9.499333,
+            "min_ms": 9.068708,
+            "max_ms": 10.395875,
+            "samples_ms": [
+              10.395875,
+              9.068708,
+              9.499333,
+              9.138833,
+              10.074458
+            ]
+          },
+          "rgit": {
+            "median_ms": 7.394792,
+            "min_ms": 7.064792,
+            "max_ms": 10.310917,
+            "samples_ms": [
+              7.064792,
+              7.394792,
+              7.615625,
+              7.287,
+              10.310917
+            ]
+          },
+          "git_over_rgit": 1.284597727698088
+        },
+        "diff": {
+          "git": {
+            "median_ms": 8.849375,
+            "min_ms": 8.443042,
+            "max_ms": 9.881,
+            "samples_ms": [
+              9.881,
+              8.443042,
+              8.849375,
+              8.498916,
+              9.054041
+            ]
+          },
+          "rgit": {
+            "median_ms": 8.167167,
+            "min_ms": 7.801041,
+            "max_ms": 8.96175,
+            "samples_ms": [
+              7.801041,
+              8.167167,
+              8.96175,
+              7.853958,
+              8.851
+            ]
+          },
+          "git_over_rgit": 1.0835305559443074
+        },
+        "log": {
+          "git": {
+            "median_ms": 8.016,
+            "min_ms": 7.714,
+            "max_ms": 8.711083,
+            "samples_ms": [
+              8.438875,
+              7.714,
+              7.89025,
+              8.016,
+              8.711083
+            ]
+          },
+          "rgit": {
+            "median_ms": 5.251166,
+            "min_ms": 4.940541,
+            "max_ms": 5.941167,
+            "samples_ms": [
+              4.940541,
+              5.251166,
+              5.941167,
+              5.030334,
+              5.273833
+            ]
+          },
+          "git_over_rgit": 1.526518110453945
+        },
+        "show": {
+          "git": {
+            "median_ms": 8.741625,
+            "min_ms": 8.543917,
+            "max_ms": 10.294791,
+            "samples_ms": [
+              9.169833,
+              8.543917,
+              8.741625,
+              8.66975,
+              10.294791
+            ]
+          },
+          "rgit": {
+            "median_ms": 6.301292,
+            "min_ms": 6.034042,
+            "max_ms": 27.11125,
+            "samples_ms": [
+              6.034042,
+              6.301292,
+              27.11125,
+              6.142167,
+              6.465959
+            ]
+          },
+          "git_over_rgit": 1.3872750223287542
+        },
+        "commit_incremental": {
+          "git": {
+            "median_ms": 22.068542,
+            "min_ms": 21.784625,
+            "max_ms": 24.945125,
+            "samples_ms": [
+              23.288833,
+              22.068542,
+              21.999917,
+              21.784625,
+              24.945125
+            ]
+          },
+          "rgit": {
+            "median_ms": 12.326541,
+            "min_ms": 11.125458,
+            "max_ms": 17.807709,
+            "samples_ms": [
+              12.326541,
+              12.25325,
+              14.933709,
+              11.125458,
+              17.807709
+            ]
+          },
+          "git_over_rgit": 1.7903272296745696
+        },
+        "branch": {
+          "git": {
+            "median_ms": 7.987958,
+            "min_ms": 7.587167,
+            "max_ms": 8.376083,
+            "samples_ms": [
+              8.274167,
+              7.778375,
+              7.987958,
+              7.587167,
+              8.376083
+            ]
+          },
+          "rgit": {
+            "median_ms": 5.459542,
+            "min_ms": 4.971084,
+            "max_ms": 7.268041,
+            "samples_ms": [
+              5.053041,
+              5.459542,
+              5.794208,
+              4.971084,
+              7.268041
+            ]
+          },
+          "git_over_rgit": 1.4631187011657754
+        },
+        "switch_old": {
+          "git": {
+            "median_ms": 11.056875,
+            "min_ms": 10.658958,
+            "max_ms": 12.218792,
+            "samples_ms": [
+              12.218792,
+              10.740208,
+              11.056875,
+              10.658958,
+              11.105458
+            ]
+          },
+          "rgit": {
+            "median_ms": 8.080375,
+            "min_ms": 7.942125,
+            "max_ms": 13.540083,
+            "samples_ms": [
+              7.942125,
+              8.070833,
+              8.693333,
+              8.080375,
+              13.540083
+            ]
+          },
+          "git_over_rgit": 1.3683616168804047
+        },
+        "switch_back": {
+          "git": {
+            "median_ms": 11.746333,
+            "min_ms": 11.127667,
+            "max_ms": 12.344916,
+            "samples_ms": [
+              12.344916,
+              11.537292,
+              11.746333,
+              11.127667,
+              12.323
+            ]
+          },
+          "rgit": {
+            "median_ms": 9.263292,
+            "min_ms": 8.570583,
+            "max_ms": 34.956708,
+            "samples_ms": [
+              8.570583,
+              34.956708,
+              9.263292,
+              8.644083,
+              9.47475
+            ]
+          },
+          "git_over_rgit": 1.268051681842697
+        },
+        "restore_file": {
+          "git": {
+            "median_ms": 8.157583,
+            "min_ms": 8.002042,
+            "max_ms": 8.832875,
+            "samples_ms": [
+              8.157583,
+              8.002042,
+              8.438708,
+              8.027709,
+              8.832875
+            ]
+          },
+          "rgit": {
+            "median_ms": 7.066791,
+            "min_ms": 6.574166,
+            "max_ms": 7.409,
+            "samples_ms": [
+              6.574166,
+              7.409,
+              7.066791,
+              6.595583,
+              7.145958
+            ]
+          },
+          "git_over_rgit": 1.1543546427225597
+        },
+        "shelve": {
+          "git": {
+            "median_ms": 23.99725,
+            "min_ms": 23.0525,
+            "max_ms": 26.945041,
+            "samples_ms": [
+              25.519875,
+              23.0525,
+              23.99725,
+              23.060542,
+              26.945041
+            ]
+          },
+          "rgit": {
+            "median_ms": 16.022333,
+            "min_ms": 13.877625,
+            "max_ms": 22.707375,
+            "samples_ms": [
+              13.912625,
+              16.022333,
+              17.246083,
+              13.877625,
+              22.707375
+            ]
+          },
+          "git_over_rgit": 1.4977375641861894
+        },
+        "unshelve": {
+          "git": {
+            "median_ms": 10.970458,
+            "min_ms": 10.877084,
+            "max_ms": 11.476542,
+            "samples_ms": [
+              11.476542,
+              10.970458,
+              11.058125,
+              10.877084,
+              10.924166
+            ]
+          },
+          "rgit": {
+            "median_ms": 9.63875,
+            "min_ms": 8.936708,
+            "max_ms": 24.224417,
+            "samples_ms": [
+              8.936708,
+              9.63875,
+              9.799917,
+              9.22075,
+              24.224417
+            ]
+          },
+          "git_over_rgit": 1.138161898586435
+        },
+        "revert": {
+          "git": {
+            "median_ms": 13.181208,
+            "min_ms": 12.5215,
+            "max_ms": 15.338,
+            "samples_ms": [
+              15.338,
+              12.5215,
+              13.224,
+              12.687417,
+              13.181208
+            ]
+          },
+          "rgit": {
+            "median_ms": 14.803792,
+            "min_ms": 13.9335,
+            "max_ms": 17.872833,
+            "samples_ms": [
+              14.791833,
+              14.847834,
+              13.9335,
+              14.803792,
+              17.872833
+            ]
+          },
+          "git_over_rgit": 0.8903940287731684
+        },
+        "merge": {
+          "git": {
+            "median_ms": 16.858667,
+            "min_ms": 16.330708,
+            "max_ms": 42.31975,
+            "samples_ms": [
+              42.31975,
+              16.336125,
+              16.869541,
+              16.330708,
+              16.858667
+            ]
+          },
+          "rgit": {
+            "median_ms": 13.960583,
+            "min_ms": 12.251125,
+            "max_ms": 17.166916,
+            "samples_ms": [
+              13.225791,
+              13.960583,
+              14.988458,
+              12.251125,
+              17.166916
+            ]
+          },
+          "git_over_rgit": 1.207590470971019
+        },
+        "push_initial": {
+          "git": {
+            "median_ms": 119.6765,
+            "min_ms": 118.930708,
+            "max_ms": 121.869333,
+            "samples_ms": [
+              121.869333,
+              118.930708,
+              120.951375,
+              118.976125,
+              119.6765
+            ]
+          },
+          "rgit": {
+            "median_ms": 1648.534458,
+            "min_ms": 1515.518084,
+            "max_ms": 1785.208083,
+            "samples_ms": [
+              1785.208083,
+              1648.534458,
+              1515.518084,
+              1622.938292,
+              1657.3615
+            ]
+          },
+          "git_over_rgit": 0.07259569214294215
+        },
+        "clone": {
+          "git": {
+            "median_ms": 69.686417,
+            "min_ms": 67.930084,
+            "max_ms": 71.938458,
+            "samples_ms": [
+              71.938458,
+              69.644125,
+              67.930084,
+              69.686417,
+              70.532208
+            ]
+          },
+          "rgit": {
+            "median_ms": 343.9355,
+            "min_ms": 325.129084,
+            "max_ms": 357.632083,
+            "samples_ms": [
+              328.009542,
+              343.9355,
+              325.129084,
+              351.094834,
+              357.632083
+            ]
+          },
+          "git_over_rgit": 0.20261478387662804
+        },
+        "push_incremental": {
+          "git": {
+            "median_ms": 44.877333,
+            "min_ms": 44.121667,
+            "max_ms": 49.867916,
+            "samples_ms": [
+              44.121667,
+              49.867916,
+              44.877333,
+              45.810542,
+              44.839958
+            ]
+          },
+          "rgit": {
+            "median_ms": 55.535291,
+            "min_ms": 52.373542,
+            "max_ms": 57.894875,
+            "samples_ms": [
+              56.448875,
+              55.535291,
+              54.410334,
+              52.373542,
+              57.894875
+            ]
+          },
+          "git_over_rgit": 0.8080867533403219
+        },
+        "fetch_incremental": {
+          "git": {
+            "median_ms": 40.421208,
+            "min_ms": 39.787,
+            "max_ms": 42.39225,
+            "samples_ms": [
+              39.787,
+              40.516541,
+              40.136125,
+              42.39225,
+              40.421208
+            ]
+          },
+          "rgit": {
+            "median_ms": 23.959083,
+            "min_ms": 20.826541,
+            "max_ms": 25.853917,
+            "samples_ms": [
+              24.944125,
+              20.826541,
+              23.959083,
+              21.100291,
+              25.853917
+            ]
+          },
+          "git_over_rgit": 1.6870932831611294
+        },
+        "pull_incremental": {
+          "git": {
+            "median_ms": 67.048209,
+            "min_ms": 65.773459,
+            "max_ms": 100.541875,
+            "samples_ms": [
+              67.048209,
+              66.140875,
+              65.773459,
+              100.541875,
+              68.524291
+            ]
+          },
+          "rgit": {
+            "median_ms": 25.165708,
+            "min_ms": 24.093625,
+            "max_ms": 27.377416,
+            "samples_ms": [
+              27.377416,
+              24.663083,
+              26.638792,
+              25.165708,
+              24.093625
+            ]
+          },
+          "git_over_rgit": 2.664268734263308
+        },
+        "push_noop": {
+          "git": {
+            "median_ms": 15.753,
+            "min_ms": 15.487083,
+            "max_ms": 16.167959,
+            "samples_ms": [
+              15.681,
+              15.487083,
+              16.108916,
+              16.167959,
+              15.753
+            ]
+          },
+          "rgit": {
+            "median_ms": 10.729792,
+            "min_ms": 9.5215,
+            "max_ms": 11.217292,
+            "samples_ms": [
+              10.648917,
+              10.734708,
+              9.5215,
+              11.217292,
+              10.729792
+            ]
+          },
+          "git_over_rgit": 1.468155207482121
+        },
+        "fetch_noop": {
+          "git": {
+            "median_ms": 24.148375,
+            "min_ms": 23.521583,
+            "max_ms": 26.527125,
+            "samples_ms": [
+              23.521583,
+              23.983208,
+              25.884125,
+              26.527125,
+              24.148375
+            ]
+          },
+          "rgit": {
+            "median_ms": 7.783,
+            "min_ms": 7.720209,
+            "max_ms": 7.801917,
+            "samples_ms": [
+              7.764834,
+              7.783,
+              7.785875,
+              7.720209,
+              7.801917
+            ]
+          },
+          "git_over_rgit": 3.102707824746242
+        },
+        "pull_noop": {
+          "git": {
+            "median_ms": 32.785084,
+            "min_ms": 32.628916,
+            "max_ms": 42.184541,
+            "samples_ms": [
+              32.821917,
+              32.628916,
+              32.765291,
+              42.184541,
+              32.785084
+            ]
+          },
+          "rgit": {
+            "median_ms": 7.410375,
+            "min_ms": 7.360833,
+            "max_ms": 7.44025,
+            "samples_ms": [
+              7.423333,
+              7.360833,
+              7.44025,
+              7.405708,
+              7.410375
+            ]
+          },
+          "git_over_rgit": 4.424213889310595
+        },
+        "verify": {
+          "git": {
+            "median_ms": 49.132125,
+            "min_ms": 47.447292,
+            "max_ms": 49.707833,
+            "samples_ms": [
+              49.561791,
+              49.132125,
+              47.447292,
+              49.707833,
+              47.840083
+            ]
+          },
+          "rgit": {
+            "median_ms": 14.918542,
+            "min_ms": 14.062583,
+            "max_ms": 17.131375,
+            "samples_ms": [
+              14.062583,
+              14.58325,
+              17.131375,
+              14.918542,
+              16.962125
+            ]
+          },
+          "git_over_rgit": 3.2933596996274836
+        },
+        "gc": {
+          "git": {
+            "median_ms": 186.403209,
+            "min_ms": 182.243292,
+            "max_ms": 219.83675,
+            "samples_ms": [
+              186.403209,
+              219.83675,
+              182.243292,
+              204.648042,
+              185.579083
+            ]
+          },
+          "rgit": {
+            "median_ms": 20.186542,
+            "min_ms": 16.868667,
+            "max_ms": 25.721125,
+            "samples_ms": [
+              16.868667,
+              20.186542,
+              25.721125,
+              18.867333,
+              21.500208
+            ]
+          },
+          "git_over_rgit": 9.234033694329618
+        }
+      }
+    },
+    "tiny": {
+      "dataset": {
+        "files": 5001,
+        "bytes": 2560010,
+        "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "order": [
+            "git",
+            "rgit"
+          ],
+          "tools": {
+            "git": {
+              "milliseconds": {
+                "init": 17.537417,
+                "commit_initial": 2101.358667,
+                "status_clean": 14.416292,
+                "status_dirty": 40.641333,
+                "diff": 12.832667,
+                "log": 9.242042,
+                "show": 9.661625,
+                "commit_incremental": 35.328667,
+                "branch": 9.021666,
+                "switch_old": 26.630084,
+                "switch_back": 18.381792,
+                "restore_file": 9.902917,
+                "shelve": 45.40925,
+                "unshelve": 19.94275,
+                "revert": 20.614584,
+                "merge": 29.022084,
+                "push_initial": 543.403166,
+                "clone": 390.124333,
+                "push_incremental": 54.132083,
+                "fetch_incremental": 43.12125,
+                "pull_incremental": 204.812084,
+                "push_noop": 16.930042,
+                "fetch_noop": 25.01825,
+                "pull_noop": 33.644541,
+                "verify": 204.972583,
+                "gc": 924.113875
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            },
+            "rgit": {
+              "milliseconds": {
+                "init": 19.899125,
+                "commit_initial": 162.286,
+                "status_clean": 34.520625,
+                "status_dirty": 35.355375,
+                "diff": 36.262625,
+                "log": 6.232708,
+                "show": 13.940292,
+                "commit_incremental": 45.683708,
+                "branch": 6.085208,
+                "switch_old": 27.143792,
+                "switch_back": 26.629625,
+                "restore_file": 22.542917,
+                "shelve": 110.680208,
+                "unshelve": 54.346333,
+                "revert": 62.81825,
+                "merge": 61.895333,
+                "push_initial": 20427.178708,
+                "clone": 1103.517833,
+                "push_incremental": 57.1715,
+                "fetch_incremental": 21.17675,
+                "pull_incremental": 48.28325,
+                "push_noop": 14.9795,
+                "fetch_noop": 7.73375,
+                "pull_noop": 7.344833,
+                "verify": 50.450208,
+                "gc": 49.82975
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 2,
+          "order": [
+            "rgit",
+            "git"
+          ],
+          "tools": {
+            "rgit": {
+              "milliseconds": {
+                "init": 16.081916,
+                "commit_initial": 158.098958,
+                "status_clean": 32.551167,
+                "status_dirty": 33.02625,
+                "diff": 34.96075,
+                "log": 5.868,
+                "show": 9.273625,
+                "commit_incremental": 40.565709,
+                "branch": 5.672125,
+                "switch_old": 27.31,
+                "switch_back": 27.289209,
+                "restore_file": 23.976625,
+                "shelve": 112.609,
+                "unshelve": 57.077792,
+                "revert": 71.981917,
+                "merge": 65.425625,
+                "push_initial": 20507.392458,
+                "clone": 1100.567583,
+                "push_incremental": 51.872167,
+                "fetch_incremental": 14.995417,
+                "pull_incremental": 40.628916,
+                "push_noop": 8.538541,
+                "fetch_noop": 7.773417,
+                "pull_noop": 7.395791,
+                "verify": 50.922958,
+                "gc": 52.486833
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            },
+            "git": {
+              "milliseconds": {
+                "init": 22.905291,
+                "commit_initial": 2022.769792,
+                "status_clean": 16.4655,
+                "status_dirty": 18.221375,
+                "diff": 15.114208,
+                "log": 9.431333,
+                "show": 9.710458,
+                "commit_incremental": 40.212,
+                "branch": 9.072083,
+                "switch_old": 16.745834,
+                "switch_back": 17.6645,
+                "restore_file": 9.382875,
+                "shelve": 43.128584,
+                "unshelve": 18.63625,
+                "revert": 19.852625,
+                "merge": 29.938791,
+                "push_initial": 540.072333,
+                "clone": 387.015208,
+                "push_incremental": 48.310209,
+                "fetch_incremental": 44.017166,
+                "pull_incremental": 183.716125,
+                "push_noop": 18.361333,
+                "fetch_noop": 24.689875,
+                "pull_noop": 34.618084,
+                "verify": 205.476625,
+                "gc": 952.27025
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 3,
+          "order": [
+            "git",
+            "rgit"
+          ],
+          "tools": {
+            "git": {
+              "milliseconds": {
+                "init": 13.173584,
+                "commit_initial": 2107.010708,
+                "status_clean": 15.261875,
+                "status_dirty": 16.220167,
+                "diff": 12.338375,
+                "log": 9.706208,
+                "show": 9.176625,
+                "commit_incremental": 34.554,
+                "branch": 9.038583,
+                "switch_old": 16.366542,
+                "switch_back": 17.451125,
+                "restore_file": 9.298041,
+                "shelve": 46.053125,
+                "unshelve": 19.4325,
+                "revert": 21.113625,
+                "merge": 32.481875,
+                "push_initial": 553.579458,
+                "clone": 391.805791,
+                "push_incremental": 52.103792,
+                "fetch_incremental": 44.704333,
+                "pull_incremental": 71.167167,
+                "push_noop": 17.902708,
+                "fetch_noop": 26.616959,
+                "pull_noop": 33.796625,
+                "verify": 210.018708,
+                "gc": 930.233417
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            },
+            "rgit": {
+              "milliseconds": {
+                "init": 32.881333,
+                "commit_initial": 162.287291,
+                "status_clean": 35.026792,
+                "status_dirty": 33.506167,
+                "diff": 35.331084,
+                "log": 5.502125,
+                "show": 9.333666,
+                "commit_incremental": 40.592334,
+                "branch": 5.615458,
+                "switch_old": 25.11675,
+                "switch_back": 27.436791,
+                "restore_file": 24.7885,
+                "shelve": 143.523708,
+                "unshelve": 58.75775,
+                "revert": 66.83725,
+                "merge": 61.813583,
+                "push_initial": 20323.536375,
+                "clone": 1172.913208,
+                "push_incremental": 54.930959,
+                "fetch_incremental": 17.052084,
+                "pull_incremental": 50.284,
+                "push_noop": 11.2685,
+                "fetch_noop": 7.649833,
+                "pull_noop": 7.359625,
+                "verify": 51.325458,
+                "gc": 52.516167
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 4,
+          "order": [
+            "rgit",
+            "git"
+          ],
+          "tools": {
+            "rgit": {
+              "milliseconds": {
+                "init": 17.315584,
+                "commit_initial": 155.278084,
+                "status_clean": 32.205875,
+                "status_dirty": 32.213167,
+                "diff": 33.915708,
+                "log": 5.376667,
+                "show": 9.331375,
+                "commit_incremental": 41.843334,
+                "branch": 5.627458,
+                "switch_old": 25.7415,
+                "switch_back": 27.649041,
+                "restore_file": 22.662125,
+                "shelve": 110.746875,
+                "unshelve": 55.534625,
+                "revert": 61.786167,
+                "merge": 64.102041,
+                "push_initial": 19901.610834,
+                "clone": 1083.779375,
+                "push_incremental": 59.0355,
+                "fetch_incremental": 17.637667,
+                "pull_incremental": 43.609,
+                "push_noop": 8.775083,
+                "fetch_noop": 7.373375,
+                "pull_noop": 7.255709,
+                "verify": 56.157125,
+                "gc": 81.596708
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            },
+            "git": {
+              "milliseconds": {
+                "init": 21.309875,
+                "commit_initial": 2057.934209,
+                "status_clean": 17.033125,
+                "status_dirty": 16.98325,
+                "diff": 13.397375,
+                "log": 8.749292,
+                "show": 9.603833,
+                "commit_incremental": 34.047667,
+                "branch": 9.051,
+                "switch_old": 16.097666,
+                "switch_back": 17.401666,
+                "restore_file": 9.175458,
+                "shelve": 44.084125,
+                "unshelve": 19.936542,
+                "revert": 20.733917,
+                "merge": 30.447,
+                "push_initial": 547.230625,
+                "clone": 388.325416,
+                "push_incremental": 46.995791,
+                "fetch_incremental": 41.846041,
+                "pull_incremental": 193.333708,
+                "push_noop": 20.703834,
+                "fetch_noop": 29.067292,
+                "pull_noop": 38.024209,
+                "verify": 221.99175,
+                "gc": 920.37875
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 5,
+          "order": [
+            "git",
+            "rgit"
+          ],
+          "tools": {
+            "git": {
+              "milliseconds": {
+                "init": 14.44,
+                "commit_initial": 2043.60175,
+                "status_clean": 15.235417,
+                "status_dirty": 15.635709,
+                "diff": 12.10775,
+                "log": 8.211208,
+                "show": 8.914916,
+                "commit_incremental": 33.909542,
+                "branch": 9.177042,
+                "switch_old": 15.847208,
+                "switch_back": 17.124083,
+                "restore_file": 8.984333,
+                "shelve": 41.621,
+                "unshelve": 18.730417,
+                "revert": 20.0965,
+                "merge": 28.721916,
+                "push_initial": 588.664834,
+                "clone": 395.122917,
+                "push_incremental": 47.437375,
+                "fetch_incremental": 41.220667,
+                "pull_incremental": 185.254416,
+                "push_noop": 18.297542,
+                "fetch_noop": 26.163042,
+                "pull_noop": 35.595458,
+                "verify": 233.951708,
+                "gc": 950.8045
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            },
+            "rgit": {
+              "milliseconds": {
+                "init": 28.728708,
+                "commit_initial": 161.604709,
+                "status_clean": 32.001625,
+                "status_dirty": 32.577791,
+                "diff": 34.30425,
+                "log": 5.574417,
+                "show": 9.339125,
+                "commit_incremental": 41.474125,
+                "branch": 5.604417,
+                "switch_old": 25.532458,
+                "switch_back": 27.272083,
+                "restore_file": 22.919959,
+                "shelve": 111.5645,
+                "unshelve": 56.046375,
+                "revert": 60.730041,
+                "merge": 73.673,
+                "push_initial": 20096.939125,
+                "clone": 1109.560958,
+                "push_incremental": 49.879209,
+                "fetch_incremental": 21.137625,
+                "pull_incremental": 40.6395,
+                "push_noop": 14.126209,
+                "fetch_noop": 7.513542,
+                "pull_noop": 7.283459,
+                "verify": 51.96075,
+                "gc": 53.5935
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5001,
+                  "bytes": 2560010,
+                  "sha256": "fca2bd32dcd4f99174296494f0dcaf626e85cfa6a1148fddcfb58b49247d3a64"
+                },
+                "merged": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "clone": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "4808032ef4b79597f6db9ba0caa32a63e16a5eab348ba69f330479841da8e008"
+                },
+                "pull": {
+                  "files": 5003,
+                  "bytes": 2560036,
+                  "sha256": "f779d2d43ca1e7d2b9e34b933fdae68be99036f8b1846bc89e90709e1846c555"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "summary": {
+        "init": {
+          "git": {
+            "median_ms": 17.537417,
+            "min_ms": 13.173584,
+            "max_ms": 22.905291,
+            "samples_ms": [
+              17.537417,
+              22.905291,
+              13.173584,
+              21.309875,
+              14.44
+            ]
+          },
+          "rgit": {
+            "median_ms": 19.899125,
+            "min_ms": 16.081916,
+            "max_ms": 32.881333,
+            "samples_ms": [
+              19.899125,
+              16.081916,
+              32.881333,
+              17.315584,
+              28.728708
+            ]
+          },
+          "git_over_rgit": 0.8813159875120137
+        },
+        "commit_initial": {
+          "git": {
+            "median_ms": 2057.934209,
+            "min_ms": 2022.769792,
+            "max_ms": 2107.010708,
+            "samples_ms": [
+              2101.358667,
+              2022.769792,
+              2107.010708,
+              2057.934209,
+              2043.60175
+            ]
+          },
+          "rgit": {
+            "median_ms": 161.604709,
+            "min_ms": 155.278084,
+            "max_ms": 162.287291,
+            "samples_ms": [
+              162.286,
+              158.098958,
+              162.287291,
+              155.278084,
+              161.604709
+            ]
+          },
+          "git_over_rgit": 12.734370314667006
+        },
+        "status_clean": {
+          "git": {
+            "median_ms": 15.261875,
+            "min_ms": 14.416292,
+            "max_ms": 17.033125,
+            "samples_ms": [
+              14.416292,
+              16.4655,
+              15.261875,
+              17.033125,
+              15.235417
+            ]
+          },
+          "rgit": {
+            "median_ms": 32.551167,
+            "min_ms": 32.001625,
+            "max_ms": 35.026792,
+            "samples_ms": [
+              34.520625,
+              32.551167,
+              35.026792,
+              32.205875,
+              32.001625
+            ]
+          },
+          "git_over_rgit": 0.46885799824012453
+        },
+        "status_dirty": {
+          "git": {
+            "median_ms": 16.98325,
+            "min_ms": 15.635709,
+            "max_ms": 40.641333,
+            "samples_ms": [
+              40.641333,
+              18.221375,
+              16.220167,
+              16.98325,
+              15.635709
+            ]
+          },
+          "rgit": {
+            "median_ms": 33.02625,
+            "min_ms": 32.213167,
+            "max_ms": 35.355375,
+            "samples_ms": [
+              35.355375,
+              33.02625,
+              33.506167,
+              32.213167,
+              32.577791
+            ]
+          },
+          "git_over_rgit": 0.5142348889141214
+        },
+        "diff": {
+          "git": {
+            "median_ms": 12.832667,
+            "min_ms": 12.10775,
+            "max_ms": 15.114208,
+            "samples_ms": [
+              12.832667,
+              15.114208,
+              12.338375,
+              13.397375,
+              12.10775
+            ]
+          },
+          "rgit": {
+            "median_ms": 34.96075,
+            "min_ms": 33.915708,
+            "max_ms": 36.262625,
+            "samples_ms": [
+              36.262625,
+              34.96075,
+              35.331084,
+              33.915708,
+              34.30425
+            ]
+          },
+          "git_over_rgit": 0.36705925931222877
+        },
+        "log": {
+          "git": {
+            "median_ms": 9.242042,
+            "min_ms": 8.211208,
+            "max_ms": 9.706208,
+            "samples_ms": [
+              9.242042,
+              9.431333,
+              9.706208,
+              8.749292,
+              8.211208
+            ]
+          },
+          "rgit": {
+            "median_ms": 5.574417,
+            "min_ms": 5.376667,
+            "max_ms": 6.232708,
+            "samples_ms": [
+              6.232708,
+              5.868,
+              5.502125,
+              5.376667,
+              5.574417
+            ]
+          },
+          "git_over_rgit": 1.6579387584387746
+        },
+        "show": {
+          "git": {
+            "median_ms": 9.603833,
+            "min_ms": 8.914916,
+            "max_ms": 9.710458,
+            "samples_ms": [
+              9.661625,
+              9.710458,
+              9.176625,
+              9.603833,
+              8.914916
+            ]
+          },
+          "rgit": {
+            "median_ms": 9.333666,
+            "min_ms": 9.273625,
+            "max_ms": 13.940292,
+            "samples_ms": [
+              13.940292,
+              9.273625,
+              9.333666,
+              9.331375,
+              9.339125
+            ]
+          },
+          "git_over_rgit": 1.0289454325877958
+        },
+        "commit_incremental": {
+          "git": {
+            "median_ms": 34.554,
+            "min_ms": 33.909542,
+            "max_ms": 40.212,
+            "samples_ms": [
+              35.328667,
+              40.212,
+              34.554,
+              34.047667,
+              33.909542
+            ]
+          },
+          "rgit": {
+            "median_ms": 41.474125,
+            "min_ms": 40.565709,
+            "max_ms": 45.683708,
+            "samples_ms": [
+              45.683708,
+              40.565709,
+              40.592334,
+              41.843334,
+              41.474125
+            ]
+          },
+          "git_over_rgit": 0.833145967515891
+        },
+        "branch": {
+          "git": {
+            "median_ms": 9.051,
+            "min_ms": 9.021666,
+            "max_ms": 9.177042,
+            "samples_ms": [
+              9.021666,
+              9.072083,
+              9.038583,
+              9.051,
+              9.177042
+            ]
+          },
+          "rgit": {
+            "median_ms": 5.627458,
+            "min_ms": 5.604417,
+            "max_ms": 6.085208,
+            "samples_ms": [
+              6.085208,
+              5.672125,
+              5.615458,
+              5.627458,
+              5.604417
+            ]
+          },
+          "git_over_rgit": 1.6083638474067687
+        },
+        "switch_old": {
+          "git": {
+            "median_ms": 16.366542,
+            "min_ms": 15.847208,
+            "max_ms": 26.630084,
+            "samples_ms": [
+              26.630084,
+              16.745834,
+              16.366542,
+              16.097666,
+              15.847208
+            ]
+          },
+          "rgit": {
+            "median_ms": 25.7415,
+            "min_ms": 25.11675,
+            "max_ms": 27.31,
+            "samples_ms": [
+              27.143792,
+              27.31,
+              25.11675,
+              25.7415,
+              25.532458
+            ]
+          },
+          "git_over_rgit": 0.6358037410407319
+        },
+        "switch_back": {
+          "git": {
+            "median_ms": 17.451125,
+            "min_ms": 17.124083,
+            "max_ms": 18.381792,
+            "samples_ms": [
+              18.381792,
+              17.6645,
+              17.451125,
+              17.401666,
+              17.124083
+            ]
+          },
+          "rgit": {
+            "median_ms": 27.289209,
+            "min_ms": 26.629625,
+            "max_ms": 27.649041,
+            "samples_ms": [
+              26.629625,
+              27.289209,
+              27.436791,
+              27.649041,
+              27.272083
+            ]
+          },
+          "git_over_rgit": 0.6394881214768813
+        },
+        "restore_file": {
+          "git": {
+            "median_ms": 9.298041,
+            "min_ms": 8.984333,
+            "max_ms": 9.902917,
+            "samples_ms": [
+              9.902917,
+              9.382875,
+              9.298041,
+              9.175458,
+              8.984333
+            ]
+          },
+          "rgit": {
+            "median_ms": 22.919959,
+            "min_ms": 22.542917,
+            "max_ms": 24.7885,
+            "samples_ms": [
+              22.542917,
+              23.976625,
+              24.7885,
+              22.662125,
+              22.919959
+            ]
+          },
+          "git_over_rgit": 0.4056744167823337
+        },
+        "shelve": {
+          "git": {
+            "median_ms": 44.084125,
+            "min_ms": 41.621,
+            "max_ms": 46.053125,
+            "samples_ms": [
+              45.40925,
+              43.128584,
+              46.053125,
+              44.084125,
+              41.621
+            ]
+          },
+          "rgit": {
+            "median_ms": 111.5645,
+            "min_ms": 110.680208,
+            "max_ms": 143.523708,
+            "samples_ms": [
+              110.680208,
+              112.609,
+              143.523708,
+              110.746875,
+              111.5645
+            ]
+          },
+          "git_over_rgit": 0.39514473690107516
+        },
+        "unshelve": {
+          "git": {
+            "median_ms": 19.4325,
+            "min_ms": 18.63625,
+            "max_ms": 19.94275,
+            "samples_ms": [
+              19.94275,
+              18.63625,
+              19.4325,
+              19.936542,
+              18.730417
+            ]
+          },
+          "rgit": {
+            "median_ms": 56.046375,
+            "min_ms": 54.346333,
+            "max_ms": 58.75775,
+            "samples_ms": [
+              54.346333,
+              57.077792,
+              58.75775,
+              55.534625,
+              56.046375
+            ]
+          },
+          "git_over_rgit": 0.34672179958115046
+        },
+        "revert": {
+          "git": {
+            "median_ms": 20.614584,
+            "min_ms": 19.852625,
+            "max_ms": 21.113625,
+            "samples_ms": [
+              20.614584,
+              19.852625,
+              21.113625,
+              20.733917,
+              20.0965
+            ]
+          },
+          "rgit": {
+            "median_ms": 62.81825,
+            "min_ms": 60.730041,
+            "max_ms": 71.981917,
+            "samples_ms": [
+              62.81825,
+              71.981917,
+              66.83725,
+              61.786167,
+              60.730041
+            ]
+          },
+          "git_over_rgit": 0.3281623413578061
+        },
+        "merge": {
+          "git": {
+            "median_ms": 29.938791,
+            "min_ms": 28.721916,
+            "max_ms": 32.481875,
+            "samples_ms": [
+              29.022084,
+              29.938791,
+              32.481875,
+              30.447,
+              28.721916
+            ]
+          },
+          "rgit": {
+            "median_ms": 64.102041,
+            "min_ms": 61.813583,
+            "max_ms": 73.673,
+            "samples_ms": [
+              61.895333,
+              65.425625,
+              61.813583,
+              64.102041,
+              73.673
+            ]
+          },
+          "git_over_rgit": 0.467048950906259
+        },
+        "push_initial": {
+          "git": {
+            "median_ms": 547.230625,
+            "min_ms": 540.072333,
+            "max_ms": 588.664834,
+            "samples_ms": [
+              543.403166,
+              540.072333,
+              553.579458,
+              547.230625,
+              588.664834
+            ]
+          },
+          "rgit": {
+            "median_ms": 20323.536375,
+            "min_ms": 19901.610834,
+            "max_ms": 20507.392458,
+            "samples_ms": [
+              20427.178708,
+              20507.392458,
+              20323.536375,
+              19901.610834,
+              20096.939125
+            ]
+          },
+          "git_over_rgit": 0.02692595495699011
+        },
+        "clone": {
+          "git": {
+            "median_ms": 390.124333,
+            "min_ms": 387.015208,
+            "max_ms": 395.122917,
+            "samples_ms": [
+              390.124333,
+              387.015208,
+              391.805791,
+              388.325416,
+              395.122917
+            ]
+          },
+          "rgit": {
+            "median_ms": 1103.517833,
+            "min_ms": 1083.779375,
+            "max_ms": 1172.913208,
+            "samples_ms": [
+              1103.517833,
+              1100.567583,
+              1172.913208,
+              1083.779375,
+              1109.560958
+            ]
+          },
+          "git_over_rgit": 0.35352789174182736
+        },
+        "push_incremental": {
+          "git": {
+            "median_ms": 48.310209,
+            "min_ms": 46.995791,
+            "max_ms": 54.132083,
+            "samples_ms": [
+              54.132083,
+              48.310209,
+              52.103792,
+              46.995791,
+              47.437375
+            ]
+          },
+          "rgit": {
+            "median_ms": 54.930959,
+            "min_ms": 49.879209,
+            "max_ms": 59.0355,
+            "samples_ms": [
+              57.1715,
+              51.872167,
+              54.930959,
+              59.0355,
+              49.879209
+            ]
+          },
+          "git_over_rgit": 0.8794714288530808
+        },
+        "fetch_incremental": {
+          "git": {
+            "median_ms": 43.12125,
+            "min_ms": 41.220667,
+            "max_ms": 44.704333,
+            "samples_ms": [
+              43.12125,
+              44.017166,
+              44.704333,
+              41.846041,
+              41.220667
+            ]
+          },
+          "rgit": {
+            "median_ms": 17.637667,
+            "min_ms": 14.995417,
+            "max_ms": 21.17675,
+            "samples_ms": [
+              21.17675,
+              14.995417,
+              17.052084,
+              17.637667,
+              21.137625
+            ]
+          },
+          "git_over_rgit": 2.444838651279673
+        },
+        "pull_incremental": {
+          "git": {
+            "median_ms": 185.254416,
+            "min_ms": 71.167167,
+            "max_ms": 204.812084,
+            "samples_ms": [
+              204.812084,
+              183.716125,
+              71.167167,
+              193.333708,
+              185.254416
+            ]
+          },
+          "rgit": {
+            "median_ms": 43.609,
+            "min_ms": 40.628916,
+            "max_ms": 50.284,
+            "samples_ms": [
+              48.28325,
+              40.628916,
+              50.284,
+              43.609,
+              40.6395
+            ]
+          },
+          "git_over_rgit": 4.248077598660826
+        },
+        "push_noop": {
+          "git": {
+            "median_ms": 18.297542,
+            "min_ms": 16.930042,
+            "max_ms": 20.703834,
+            "samples_ms": [
+              16.930042,
+              18.361333,
+              17.902708,
+              20.703834,
+              18.297542
+            ]
+          },
+          "rgit": {
+            "median_ms": 11.2685,
+            "min_ms": 8.538541,
+            "max_ms": 14.9795,
+            "samples_ms": [
+              14.9795,
+              8.538541,
+              11.2685,
+              8.775083,
+              14.126209
+            ]
+          },
+          "git_over_rgit": 1.6237779651240183
+        },
+        "fetch_noop": {
+          "git": {
+            "median_ms": 26.163042,
+            "min_ms": 24.689875,
+            "max_ms": 29.067292,
+            "samples_ms": [
+              25.01825,
+              24.689875,
+              26.616959,
+              29.067292,
+              26.163042
+            ]
+          },
+          "rgit": {
+            "median_ms": 7.649833,
+            "min_ms": 7.373375,
+            "max_ms": 7.773417,
+            "samples_ms": [
+              7.73375,
+              7.773417,
+              7.649833,
+              7.373375,
+              7.513542
+            ]
+          },
+          "git_over_rgit": 3.4200801507693046
+        },
+        "pull_noop": {
+          "git": {
+            "median_ms": 34.618084,
+            "min_ms": 33.644541,
+            "max_ms": 38.024209,
+            "samples_ms": [
+              33.644541,
+              34.618084,
+              33.796625,
+              38.024209,
+              35.595458
+            ]
+          },
+          "rgit": {
+            "median_ms": 7.344833,
+            "min_ms": 7.255709,
+            "max_ms": 7.395791,
+            "samples_ms": [
+              7.344833,
+              7.395791,
+              7.359625,
+              7.255709,
+              7.283459
+            ]
+          },
+          "git_over_rgit": 4.713256788820114
+        },
+        "verify": {
+          "git": {
+            "median_ms": 210.018708,
+            "min_ms": 204.972583,
+            "max_ms": 233.951708,
+            "samples_ms": [
+              204.972583,
+              205.476625,
+              210.018708,
+              221.99175,
+              233.951708
+            ]
+          },
+          "rgit": {
+            "median_ms": 51.325458,
+            "min_ms": 50.450208,
+            "max_ms": 56.157125,
+            "samples_ms": [
+              50.450208,
+              50.922958,
+              51.325458,
+              56.157125,
+              51.96075
+            ]
+          },
+          "git_over_rgit": 4.091901293895907
+        },
+        "gc": {
+          "git": {
+            "median_ms": 930.233417,
+            "min_ms": 920.37875,
+            "max_ms": 952.27025,
+            "samples_ms": [
+              924.113875,
+              952.27025,
+              930.233417,
+              920.37875,
+              950.8045
+            ]
+          },
+          "rgit": {
+            "median_ms": 52.516167,
+            "min_ms": 49.82975,
+            "max_ms": 81.596708,
+            "samples_ms": [
+              49.82975,
+              52.486833,
+              52.516167,
+              81.596708,
+              53.5935
+            ]
+          },
+          "git_over_rgit": 17.713277075229044
+        }
+      }
+    },
+    "large": {
+      "dataset": {
+        "files": 5,
+        "bytes": 67108874,
+        "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+      },
+      "rounds": [
+        {
+          "round": 1,
+          "order": [
+            "git",
+            "rgit"
+          ],
+          "tools": {
+            "git": {
+              "milliseconds": {
+                "init": 46.062708,
+                "commit_initial": 1244.773375,
+                "status_clean": 8.589792,
+                "status_dirty": 125.216084,
+                "diff": 143.223458,
+                "log": 10.402833,
+                "show": 29.023583,
+                "commit_incremental": 1273.783583,
+                "branch": 8.767417,
+                "switch_old": 282.874,
+                "switch_back": 80.582458,
+                "restore_file": 9.300417,
+                "shelve": 606.584083,
+                "unshelve": 128.086167,
+                "revert": 173.908916,
+                "merge": 18.233375,
+                "push_initial": 21226.404209,
+                "clone": 6439.686667,
+                "push_incremental": 1629.122916,
+                "fetch_incremental": 1687.148417,
+                "pull_incremental": 1710.63425,
+                "push_noop": 17.097625,
+                "fetch_noop": 24.918875,
+                "pull_noop": 33.75025,
+                "verify": 2894.2075,
+                "gc": 4552.960083
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            },
+            "rgit": {
+              "milliseconds": {
+                "init": 36.223959,
+                "commit_initial": 145.513625,
+                "status_clean": 75.838792,
+                "status_dirty": 75.847875,
+                "diff": 129.644042,
+                "log": 6.002375,
+                "show": 90.261625,
+                "commit_incremental": 88.192709,
+                "branch": 5.8905,
+                "switch_old": 122.825042,
+                "switch_back": 148.952541,
+                "restore_file": 6.724292,
+                "shelve": 225.942583,
+                "unshelve": 76.040292,
+                "revert": 320.306875,
+                "merge": 77.532459,
+                "push_initial": 1860.585125,
+                "clone": 675.726916,
+                "push_incremental": 75.997875,
+                "fetch_incremental": 36.519542,
+                "pull_incremental": 153.809667,
+                "push_noop": 12.861084,
+                "fetch_noop": 7.762875,
+                "pull_noop": 7.337459,
+                "verify": 88.02875,
+                "gc": 46.482125
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 2,
+          "order": [
+            "rgit",
+            "git"
+          ],
+          "tools": {
+            "rgit": {
+              "milliseconds": {
+                "init": 18.097458,
+                "commit_initial": 104.534833,
+                "status_clean": 75.064125,
+                "status_dirty": 73.754458,
+                "diff": 124.047083,
+                "log": 5.559,
+                "show": 87.547417,
+                "commit_incremental": 85.5735,
+                "branch": 5.685292,
+                "switch_old": 122.629583,
+                "switch_back": 125.491875,
+                "restore_file": 6.59375,
+                "shelve": 227.881083,
+                "unshelve": 74.801833,
+                "revert": 196.418375,
+                "merge": 80.325875,
+                "push_initial": 1881.762916,
+                "clone": 689.974833,
+                "push_incremental": 67.889166,
+                "fetch_incremental": 34.001333,
+                "pull_incremental": 168.819875,
+                "push_noop": 10.198125,
+                "fetch_noop": 7.874917,
+                "pull_noop": 7.346166,
+                "verify": 89.651583,
+                "gc": 46.009542
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            },
+            "git": {
+              "milliseconds": {
+                "init": 18.049083,
+                "commit_initial": 1248.692375,
+                "status_clean": 8.540958,
+                "status_dirty": 138.770625,
+                "diff": 139.985,
+                "log": 10.937333,
+                "show": 28.351292,
+                "commit_incremental": 1219.235458,
+                "branch": 8.305125,
+                "switch_old": 192.041542,
+                "switch_back": 160.661166,
+                "restore_file": 10.202041,
+                "shelve": 516.773125,
+                "unshelve": 11.636667,
+                "revert": 60.117458,
+                "merge": 15.841417,
+                "push_initial": 20802.653125,
+                "clone": 6528.955875,
+                "push_incremental": 1696.195042,
+                "fetch_incremental": 1619.448583,
+                "pull_incremental": 1699.863167,
+                "push_noop": 16.398459,
+                "fetch_noop": 25.298916,
+                "pull_noop": 34.239167,
+                "verify": 2867.4185,
+                "gc": 4791.06675
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 3,
+          "order": [
+            "git",
+            "rgit"
+          ],
+          "tools": {
+            "git": {
+              "milliseconds": {
+                "init": 16.566584,
+                "commit_initial": 1263.264667,
+                "status_clean": 8.158709,
+                "status_dirty": 123.483042,
+                "diff": 138.715375,
+                "log": 9.888458,
+                "show": 27.823416,
+                "commit_incremental": 1249.270292,
+                "branch": 8.789959,
+                "switch_old": 188.657167,
+                "switch_back": 135.755,
+                "restore_file": 9.878125,
+                "shelve": 606.06625,
+                "unshelve": 126.391875,
+                "revert": 60.756291,
+                "merge": 139.128916,
+                "push_initial": 20523.784333,
+                "clone": 6278.607125,
+                "push_incremental": 1646.378958,
+                "fetch_incremental": 1598.489792,
+                "pull_incremental": 1672.524417,
+                "push_noop": 16.54475,
+                "fetch_noop": 24.811458,
+                "pull_noop": 33.411167,
+                "verify": 2759.468333,
+                "gc": 4651.728458
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            },
+            "rgit": {
+              "milliseconds": {
+                "init": 27.888958,
+                "commit_initial": 106.972042,
+                "status_clean": 74.044667,
+                "status_dirty": 73.683625,
+                "diff": 123.436125,
+                "log": 5.786709,
+                "show": 86.962958,
+                "commit_incremental": 85.016542,
+                "branch": 5.570833,
+                "switch_old": 122.688125,
+                "switch_back": 126.909834,
+                "restore_file": 6.491291,
+                "shelve": 236.007333,
+                "unshelve": 74.418875,
+                "revert": 194.902833,
+                "merge": 100.247708,
+                "push_initial": 1916.688458,
+                "clone": 711.289542,
+                "push_incremental": 66.39625,
+                "fetch_incremental": 31.727584,
+                "pull_incremental": 151.96825,
+                "push_noop": 13.942042,
+                "fetch_noop": 7.749584,
+                "pull_noop": 7.353708,
+                "verify": 88.270375,
+                "gc": 40.791209
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 4,
+          "order": [
+            "rgit",
+            "git"
+          ],
+          "tools": {
+            "rgit": {
+              "milliseconds": {
+                "init": 32.015083,
+                "commit_initial": 144.786917,
+                "status_clean": 74.177417,
+                "status_dirty": 74.033708,
+                "diff": 124.217708,
+                "log": 5.932042,
+                "show": 87.961333,
+                "commit_incremental": 84.792958,
+                "branch": 6.02325,
+                "switch_old": 119.505959,
+                "switch_back": 123.482125,
+                "restore_file": 6.294959,
+                "shelve": 214.5665,
+                "unshelve": 74.694541,
+                "revert": 206.55075,
+                "merge": 79.801209,
+                "push_initial": 1963.872375,
+                "clone": 672.971834,
+                "push_incremental": 64.775291,
+                "fetch_incremental": 36.565291,
+                "pull_incremental": 152.892208,
+                "push_noop": 11.752917,
+                "fetch_noop": 7.703417,
+                "pull_noop": 7.405083,
+                "verify": 87.614333,
+                "gc": 41.14225
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            },
+            "git": {
+              "milliseconds": {
+                "init": 14.609625,
+                "commit_initial": 1265.831917,
+                "status_clean": 8.081792,
+                "status_dirty": 122.643708,
+                "diff": 137.2695,
+                "log": 9.493917,
+                "show": 27.631208,
+                "commit_incremental": 1279.4845,
+                "branch": 8.320166,
+                "switch_old": 215.214708,
+                "switch_back": 160.541209,
+                "restore_file": 9.242417,
+                "shelve": 596.516458,
+                "unshelve": 11.419834,
+                "revert": 58.9445,
+                "merge": 31.083833,
+                "push_initial": 20615.023458,
+                "clone": 6446.734125,
+                "push_incremental": 1618.503584,
+                "fetch_incremental": 1663.4225,
+                "pull_incremental": 1703.141875,
+                "push_noop": 17.698042,
+                "fetch_noop": 26.255291,
+                "pull_noop": 35.490292,
+                "verify": 2725.0255,
+                "gc": 4607.925833
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            }
+          }
+        },
+        {
+          "round": 5,
+          "order": [
+            "git",
+            "rgit"
+          ],
+          "tools": {
+            "git": {
+              "milliseconds": {
+                "init": 16.439792,
+                "commit_initial": 1241.364458,
+                "status_clean": 8.61375,
+                "status_dirty": 124.316958,
+                "diff": 144.37925,
+                "log": 10.90075,
+                "show": 28.9385,
+                "commit_incremental": 1233.33725,
+                "branch": 8.357083,
+                "switch_old": 184.0625,
+                "switch_back": 160.8975,
+                "restore_file": 9.069625,
+                "shelve": 603.564083,
+                "unshelve": 12.082708,
+                "revert": 62.835666,
+                "merge": 16.339042,
+                "push_initial": 20651.230333,
+                "clone": 5923.968333,
+                "push_incremental": 1673.095709,
+                "fetch_incremental": 1684.632791,
+                "pull_incremental": 1672.923,
+                "push_noop": 17.396166,
+                "fetch_noop": 29.509417,
+                "pull_noop": 36.20775,
+                "verify": 2735.56075,
+                "gc": 4663.978917
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            },
+            "rgit": {
+              "milliseconds": {
+                "init": 27.6405,
+                "commit_initial": 120.862875,
+                "status_clean": 74.199208,
+                "status_dirty": 73.778708,
+                "diff": 124.529459,
+                "log": 5.735583,
+                "show": 87.609917,
+                "commit_incremental": 86.212667,
+                "branch": 5.789709,
+                "switch_old": 120.260375,
+                "switch_back": 126.719,
+                "restore_file": 6.418834,
+                "shelve": 213.951125,
+                "unshelve": 73.958666,
+                "revert": 193.974583,
+                "merge": 78.536333,
+                "push_initial": 2309.081542,
+                "clone": 760.988,
+                "push_incremental": 78.958875,
+                "fetch_incremental": 41.774875,
+                "pull_incremental": 158.587042,
+                "push_noop": 8.85125,
+                "fetch_noop": 7.813667,
+                "pull_noop": 7.39925,
+                "verify": 90.24675,
+                "gc": 49.003583
+              },
+              "content_checks": {
+                "oldest": {
+                  "files": 5,
+                  "bytes": 67108874,
+                  "sha256": "6b4f994279e0aa0545437c96b9ae140700ac0f7ca1a7f8860b75cfb925cdd588"
+                },
+                "merged": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "clone": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "c63f414d7cc44fd5684f44bba5dac2c9f227d7968934b4128bc0cd5d518a041f"
+                },
+                "pull": {
+                  "files": 7,
+                  "bytes": 67108900,
+                  "sha256": "7b44d8b759cb9eab59756a59f33811c29cd99667ba4abb3659d13f54395010d5"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "summary": {
+        "init": {
+          "git": {
+            "median_ms": 16.566584,
+            "min_ms": 14.609625,
+            "max_ms": 46.062708,
+            "samples_ms": [
+              46.062708,
+              18.049083,
+              16.566584,
+              14.609625,
+              16.439792
+            ]
+          },
+          "rgit": {
+            "median_ms": 27.888958,
+            "min_ms": 18.097458,
+            "max_ms": 36.223959,
+            "samples_ms": [
+              36.223959,
+              18.097458,
+              27.888958,
+              32.015083,
+              27.6405
+            ]
+          },
+          "git_over_rgit": 0.5940194682067361
+        },
+        "commit_initial": {
+          "git": {
+            "median_ms": 1248.692375,
+            "min_ms": 1241.364458,
+            "max_ms": 1265.831917,
+            "samples_ms": [
+              1244.773375,
+              1248.692375,
+              1263.264667,
+              1265.831917,
+              1241.364458
+            ]
+          },
+          "rgit": {
+            "median_ms": 120.862875,
+            "min_ms": 104.534833,
+            "max_ms": 145.513625,
+            "samples_ms": [
+              145.513625,
+              104.534833,
+              106.972042,
+              144.786917,
+              120.862875
+            ]
+          },
+          "git_over_rgit": 10.33147999333956
+        },
+        "status_clean": {
+          "git": {
+            "median_ms": 8.540958,
+            "min_ms": 8.081792,
+            "max_ms": 8.61375,
+            "samples_ms": [
+              8.589792,
+              8.540958,
+              8.158709,
+              8.081792,
+              8.61375
+            ]
+          },
+          "rgit": {
+            "median_ms": 74.199208,
+            "min_ms": 74.044667,
+            "max_ms": 75.838792,
+            "samples_ms": [
+              75.838792,
+              75.064125,
+              74.044667,
+              74.177417,
+              74.199208
+            ]
+          },
+          "git_over_rgit": 0.11510847932500842
+        },
+        "status_dirty": {
+          "git": {
+            "median_ms": 124.316958,
+            "min_ms": 122.643708,
+            "max_ms": 138.770625,
+            "samples_ms": [
+              125.216084,
+              138.770625,
+              123.483042,
+              122.643708,
+              124.316958
+            ]
+          },
+          "rgit": {
+            "median_ms": 73.778708,
+            "min_ms": 73.683625,
+            "max_ms": 75.847875,
+            "samples_ms": [
+              75.847875,
+              73.754458,
+              73.683625,
+              74.033708,
+              73.778708
+            ]
+          },
+          "git_over_rgit": 1.6849977638534956
+        },
+        "diff": {
+          "git": {
+            "median_ms": 139.985,
+            "min_ms": 137.2695,
+            "max_ms": 144.37925,
+            "samples_ms": [
+              143.223458,
+              139.985,
+              138.715375,
+              137.2695,
+              144.37925
+            ]
+          },
+          "rgit": {
+            "median_ms": 124.217708,
+            "min_ms": 123.436125,
+            "max_ms": 129.644042,
+            "samples_ms": [
+              129.644042,
+              124.047083,
+              123.436125,
+              124.217708,
+              124.529459
+            ]
+          },
+          "git_over_rgit": 1.1269327236338962
+        },
+        "log": {
+          "git": {
+            "median_ms": 10.402833,
+            "min_ms": 9.493917,
+            "max_ms": 10.937333,
+            "samples_ms": [
+              10.402833,
+              10.937333,
+              9.888458,
+              9.493917,
+              10.90075
+            ]
+          },
+          "rgit": {
+            "median_ms": 5.786709,
+            "min_ms": 5.559,
+            "max_ms": 6.002375,
+            "samples_ms": [
+              6.002375,
+              5.559,
+              5.786709,
+              5.932042,
+              5.735583
+            ]
+          },
+          "git_over_rgit": 1.7977114453137353
+        },
+        "show": {
+          "git": {
+            "median_ms": 28.351292,
+            "min_ms": 27.631208,
+            "max_ms": 29.023583,
+            "samples_ms": [
+              29.023583,
+              28.351292,
+              27.823416,
+              27.631208,
+              28.9385
+            ]
+          },
+          "rgit": {
+            "median_ms": 87.609917,
+            "min_ms": 86.962958,
+            "max_ms": 90.261625,
+            "samples_ms": [
+              90.261625,
+              87.547417,
+              86.962958,
+              87.961333,
+              87.609917
+            ]
+          },
+          "git_over_rgit": 0.3236082508787219
+        },
+        "commit_incremental": {
+          "git": {
+            "median_ms": 1249.270292,
+            "min_ms": 1219.235458,
+            "max_ms": 1279.4845,
+            "samples_ms": [
+              1273.783583,
+              1219.235458,
+              1249.270292,
+              1279.4845,
+              1233.33725
+            ]
+          },
+          "rgit": {
+            "median_ms": 85.5735,
+            "min_ms": 84.792958,
+            "max_ms": 88.192709,
+            "samples_ms": [
+              88.192709,
+              85.5735,
+              85.016542,
+              84.792958,
+              86.212667
+            ]
+          },
+          "git_over_rgit": 14.59879860003389
+        },
+        "branch": {
+          "git": {
+            "median_ms": 8.357083,
+            "min_ms": 8.305125,
+            "max_ms": 8.789959,
+            "samples_ms": [
+              8.767417,
+              8.305125,
+              8.789959,
+              8.320166,
+              8.357083
+            ]
+          },
+          "rgit": {
+            "median_ms": 5.789709,
+            "min_ms": 5.570833,
+            "max_ms": 6.02325,
+            "samples_ms": [
+              5.8905,
+              5.685292,
+              5.570833,
+              6.02325,
+              5.789709
+            ]
+          },
+          "git_over_rgit": 1.4434374853727534
+        },
+        "switch_old": {
+          "git": {
+            "median_ms": 192.041542,
+            "min_ms": 184.0625,
+            "max_ms": 282.874,
+            "samples_ms": [
+              282.874,
+              192.041542,
+              188.657167,
+              215.214708,
+              184.0625
+            ]
+          },
+          "rgit": {
+            "median_ms": 122.629583,
+            "min_ms": 119.505959,
+            "max_ms": 122.825042,
+            "samples_ms": [
+              122.825042,
+              122.629583,
+              122.688125,
+              119.505959,
+              120.260375
+            ]
+          },
+          "git_over_rgit": 1.566029479199974
+        },
+        "switch_back": {
+          "git": {
+            "median_ms": 160.541209,
+            "min_ms": 80.582458,
+            "max_ms": 160.8975,
+            "samples_ms": [
+              80.582458,
+              160.661166,
+              135.755,
+              160.541209,
+              160.8975
+            ]
+          },
+          "rgit": {
+            "median_ms": 126.719,
+            "min_ms": 123.482125,
+            "max_ms": 148.952541,
+            "samples_ms": [
+              148.952541,
+              125.491875,
+              126.909834,
+              123.482125,
+              126.719
+            ]
+          },
+          "git_over_rgit": 1.2669071646714385
+        },
+        "restore_file": {
+          "git": {
+            "median_ms": 9.300417,
+            "min_ms": 9.069625,
+            "max_ms": 10.202041,
+            "samples_ms": [
+              9.300417,
+              10.202041,
+              9.878125,
+              9.242417,
+              9.069625
+            ]
+          },
+          "rgit": {
+            "median_ms": 6.491291,
+            "min_ms": 6.294959,
+            "max_ms": 6.724292,
+            "samples_ms": [
+              6.724292,
+              6.59375,
+              6.491291,
+              6.294959,
+              6.418834
+            ]
+          },
+          "git_over_rgit": 1.4327530532832373
+        },
+        "shelve": {
+          "git": {
+            "median_ms": 603.564083,
+            "min_ms": 516.773125,
+            "max_ms": 606.584083,
+            "samples_ms": [
+              606.584083,
+              516.773125,
+              606.06625,
+              596.516458,
+              603.564083
+            ]
+          },
+          "rgit": {
+            "median_ms": 225.942583,
+            "min_ms": 213.951125,
+            "max_ms": 236.007333,
+            "samples_ms": [
+              225.942583,
+              227.881083,
+              236.007333,
+              214.5665,
+              213.951125
+            ]
+          },
+          "git_over_rgit": 2.6713162033736686
+        },
+        "unshelve": {
+          "git": {
+            "median_ms": 12.082708,
+            "min_ms": 11.419834,
+            "max_ms": 128.086167,
+            "samples_ms": [
+              128.086167,
+              11.636667,
+              126.391875,
+              11.419834,
+              12.082708
+            ]
+          },
+          "rgit": {
+            "median_ms": 74.694541,
+            "min_ms": 73.958666,
+            "max_ms": 76.040292,
+            "samples_ms": [
+              76.040292,
+              74.801833,
+              74.418875,
+              74.694541,
+              73.958666
+            ]
+          },
+          "git_over_rgit": 0.1617615937957233
+        },
+        "revert": {
+          "git": {
+            "median_ms": 60.756291,
+            "min_ms": 58.9445,
+            "max_ms": 173.908916,
+            "samples_ms": [
+              173.908916,
+              60.117458,
+              60.756291,
+              58.9445,
+              62.835666
+            ]
+          },
+          "rgit": {
+            "median_ms": 196.418375,
+            "min_ms": 193.974583,
+            "max_ms": 320.306875,
+            "samples_ms": [
+              320.306875,
+              196.418375,
+              194.902833,
+              206.55075,
+              193.974583
+            ]
+          },
+          "git_over_rgit": 0.30932081074390316
+        },
+        "merge": {
+          "git": {
+            "median_ms": 18.233375,
+            "min_ms": 15.841417,
+            "max_ms": 139.128916,
+            "samples_ms": [
+              18.233375,
+              15.841417,
+              139.128916,
+              31.083833,
+              16.339042
+            ]
+          },
+          "rgit": {
+            "median_ms": 79.801209,
+            "min_ms": 77.532459,
+            "max_ms": 100.247708,
+            "samples_ms": [
+              77.532459,
+              80.325875,
+              100.247708,
+              79.801209,
+              78.536333
+            ]
+          },
+          "git_over_rgit": 0.2284849468884613
+        },
+        "push_initial": {
+          "git": {
+            "median_ms": 20651.230333,
+            "min_ms": 20523.784333,
+            "max_ms": 21226.404209,
+            "samples_ms": [
+              21226.404209,
+              20802.653125,
+              20523.784333,
+              20615.023458,
+              20651.230333
+            ]
+          },
+          "rgit": {
+            "median_ms": 1916.688458,
+            "min_ms": 1860.585125,
+            "max_ms": 2309.081542,
+            "samples_ms": [
+              1860.585125,
+              1881.762916,
+              1916.688458,
+              1963.872375,
+              2309.081542
+            ]
+          },
+          "git_over_rgit": 10.774432457609132
+        },
+        "clone": {
+          "git": {
+            "median_ms": 6439.686667,
+            "min_ms": 5923.968333,
+            "max_ms": 6528.955875,
+            "samples_ms": [
+              6439.686667,
+              6528.955875,
+              6278.607125,
+              6446.734125,
+              5923.968333
+            ]
+          },
+          "rgit": {
+            "median_ms": 689.974833,
+            "min_ms": 672.971834,
+            "max_ms": 760.988,
+            "samples_ms": [
+              675.726916,
+              689.974833,
+              711.289542,
+              672.971834,
+              760.988
+            ]
+          },
+          "git_over_rgit": 9.333219646578037
+        },
+        "push_incremental": {
+          "git": {
+            "median_ms": 1646.378958,
+            "min_ms": 1618.503584,
+            "max_ms": 1696.195042,
+            "samples_ms": [
+              1629.122916,
+              1696.195042,
+              1646.378958,
+              1618.503584,
+              1673.095709
+            ]
+          },
+          "rgit": {
+            "median_ms": 67.889166,
+            "min_ms": 64.775291,
+            "max_ms": 78.958875,
+            "samples_ms": [
+              75.997875,
+              67.889166,
+              66.39625,
+              64.775291,
+              78.958875
+            ]
+          },
+          "git_over_rgit": 24.250982225941616
+        },
+        "fetch_incremental": {
+          "git": {
+            "median_ms": 1663.4225,
+            "min_ms": 1598.489792,
+            "max_ms": 1687.148417,
+            "samples_ms": [
+              1687.148417,
+              1619.448583,
+              1598.489792,
+              1663.4225,
+              1684.632791
+            ]
+          },
+          "rgit": {
+            "median_ms": 36.519542,
+            "min_ms": 31.727584,
+            "max_ms": 41.774875,
+            "samples_ms": [
+              36.519542,
+              34.001333,
+              31.727584,
+              36.565291,
+              41.774875
+            ]
+          },
+          "git_over_rgit": 45.54883245797551
+        },
+        "pull_incremental": {
+          "git": {
+            "median_ms": 1699.863167,
+            "min_ms": 1672.524417,
+            "max_ms": 1710.63425,
+            "samples_ms": [
+              1710.63425,
+              1699.863167,
+              1672.524417,
+              1703.141875,
+              1672.923
+            ]
+          },
+          "rgit": {
+            "median_ms": 153.809667,
+            "min_ms": 151.96825,
+            "max_ms": 168.819875,
+            "samples_ms": [
+              153.809667,
+              168.819875,
+              151.96825,
+              152.892208,
+              158.587042
+            ]
+          },
+          "git_over_rgit": 11.051731663914207
+        },
+        "push_noop": {
+          "git": {
+            "median_ms": 17.097625,
+            "min_ms": 16.398459,
+            "max_ms": 17.698042,
+            "samples_ms": [
+              17.097625,
+              16.398459,
+              16.54475,
+              17.698042,
+              17.396166
+            ]
+          },
+          "rgit": {
+            "median_ms": 11.752917,
+            "min_ms": 8.85125,
+            "max_ms": 13.942042,
+            "samples_ms": [
+              12.861084,
+              10.198125,
+              13.942042,
+              11.752917,
+              8.85125
+            ]
+          },
+          "git_over_rgit": 1.4547558703937074
+        },
+        "fetch_noop": {
+          "git": {
+            "median_ms": 25.298916,
+            "min_ms": 24.811458,
+            "max_ms": 29.509417,
+            "samples_ms": [
+              24.918875,
+              25.298916,
+              24.811458,
+              26.255291,
+              29.509417
+            ]
+          },
+          "rgit": {
+            "median_ms": 7.762875,
+            "min_ms": 7.703417,
+            "max_ms": 7.874917,
+            "samples_ms": [
+              7.762875,
+              7.874917,
+              7.749584,
+              7.703417,
+              7.813667
+            ]
+          },
+          "git_over_rgit": 3.2589621757403022
+        },
+        "pull_noop": {
+          "git": {
+            "median_ms": 34.239167,
+            "min_ms": 33.411167,
+            "max_ms": 36.20775,
+            "samples_ms": [
+              33.75025,
+              34.239167,
+              33.411167,
+              35.490292,
+              36.20775
+            ]
+          },
+          "rgit": {
+            "median_ms": 7.353708,
+            "min_ms": 7.337459,
+            "max_ms": 7.405083,
+            "samples_ms": [
+              7.337459,
+              7.346166,
+              7.353708,
+              7.405083,
+              7.39925
+            ]
+          },
+          "git_over_rgit": 4.6560411427813015
+        },
+        "verify": {
+          "git": {
+            "median_ms": 2759.468333,
+            "min_ms": 2725.0255,
+            "max_ms": 2894.2075,
+            "samples_ms": [
+              2894.2075,
+              2867.4185,
+              2759.468333,
+              2725.0255,
+              2735.56075
+            ]
+          },
+          "rgit": {
+            "median_ms": 88.270375,
+            "min_ms": 87.614333,
+            "max_ms": 90.24675,
+            "samples_ms": [
+              88.02875,
+              89.651583,
+              88.270375,
+              87.614333,
+              90.24675
+            ]
+          },
+          "git_over_rgit": 31.26154537125281
+        },
+        "gc": {
+          "git": {
+            "median_ms": 4651.728458,
+            "min_ms": 4552.960083,
+            "max_ms": 4791.06675,
+            "samples_ms": [
+              4552.960083,
+              4791.06675,
+              4651.728458,
+              4607.925833,
+              4663.978917
+            ]
+          },
+          "rgit": {
+            "median_ms": 46.009542,
+            "min_ms": 40.791209,
+            "max_ms": 49.003583,
+            "samples_ms": [
+              46.482125,
+              46.009542,
+              40.791209,
+              41.14225,
+              49.003583
+            ]
+          },
+          "git_over_rgit": 101.10355930080763
+        }
+      }
+    }
+  }
+}

@@ -68,6 +68,47 @@ Invitations are normally single-use; create a separate one for each new device. 
 
 Successful sharing means the host received the version. Other computers must still pull to update their files.
 
+<!-- operation-benchmark:start -->
+## Operation speed compared with Git
+
+Measured CLI wall time on **2026-10-20, Apple M3 / 8 GB / macOS 27.0.1**. Both tools use identical synthetic source data (initially 301 files, 2.14 MiB), starting from fresh repositories for each of 5 rounds. Values are medians; **lower is faster**. Git commit timings include `add + commit`.
+
+| Operation | Git (ms) | RustGit (ms) | Git / RustGit |
+| --- | ---: | ---: | ---: |
+| Initialize | 12.9 | 13.4 | 0.96× |
+| Initial commit | 167.6 | 24.0 | 6.98× |
+| Status: clean | 8.85 | 7.46 | 1.19× |
+| Status: modified | 9.50 | 7.39 | 1.28× |
+| Working-tree diff | 8.85 | 8.17 | 1.08× |
+| History (11 commits) | 8.02 | 5.25 | 1.53× |
+| Show one commit | 8.74 | 6.30 | 1.39× |
+| Incremental commit | 22.1 | 12.3 | 1.79× |
+| Create branch | 7.99 | 5.46 | 1.46× |
+| Switch to initial version | 11.1 | 8.08 | 1.37× |
+| Switch back to main | 11.7 | 9.26 | 1.27× |
+| Restore one file | 8.16 | 7.07 | 1.15× |
+| Shelve / stash | 24.0 | 16.0 | 1.50× |
+| Unshelve / stash pop | 11.0 | 9.64 | 1.14× |
+| Revert commit | 13.2 | 14.8 | 0.89× |
+| Merge (no conflicts) | 16.9 | 14.0 | 1.21× |
+| Initial push | 119.7 | 1648.5 | 0.07× |
+| Clone with checkout | 69.7 | 343.9 | 0.20× |
+| Incremental push | 44.9 | 55.5 | 0.81× |
+| Incremental fetch | 40.4 | 24.0 | 1.69× |
+| Incremental pull + merge | 67.0 | 25.2 | 2.66× |
+| Push: up to date | 15.8 | 10.7 | 1.47× |
+| Fetch: up to date | 24.1 | 7.78 | 3.10× |
+| Pull: up to date | 32.8 | 7.41 | 4.42× |
+| Integrity check | 49.1 | 14.9 | 3.29× |
+| Default GC | 186.4 | 20.2 | 9.23× |
+
+`Git / RustGit` above 1 favors RustGit; below 1 favors Git. Small differences may fall within run-to-run variation. RustGit is not faster at every operation.
+
+**The workload changes the result:** full clone in the 64 MiB large-file case took Git 6.44 s / RustGit 0.69 s; initial push of 5,001 small files took Git 0.55 s / RustGit 20.32 s. The former includes localized large-file edits and is not a claim about every large-file project; the latter exposes RustGit's current small-file initial-transfer overhead.
+
+Both synchronize over loopback TCP: Git uses unencrypted `git://`; RustGit authenticates and encrypts connections. Invitation/enrollment is outside the timing. Integrity checks and GC have different implementations and guarantees; these compare command cost only. Process startup is included. These are **not Windows, real LAN, or WAN measurements**. Additional workloads cover 5,001 small files and 64 MiB of large files. See the [performance guide](docs/performance.md) for all results, individual samples, and reproduction commands.
+<!-- operation-benchmark:end -->
+
 ## Can I host it on a server?
 
 **Yes. Run `rgit serve` on the server and connect desktop clients through invitations.** The server does not need a desktop interface, and your personal computer does not need to stay on. A persistent host, Linux server, or suitably configured NAS can store the shared history.
@@ -87,7 +128,8 @@ install -m 755 target/release/rgit "$HOME/.local/bin/rgit"
 
 # Use this same directory for the service and administration commands
 export RGIT_HOME="$HOME/.local/share/rustgit-server"
-"$HOME/.local/bin/rgit" --insecure-file-keys serve   --init "$HOME/rustgit-repos/myproject.rgit" --listen 0.0.0.0:7878
+"$HOME/.local/bin/rgit" --insecure-file-keys serve \
+  --init "$HOME/rustgit-repos/myproject.rgit" --listen 0.0.0.0:7878
 ```
 
 Linux currently requires explicit `--insecure-file-keys`: private keys are unencrypted files readable only by their owner. **Network connections still require authentication and encryption.** Use a dedicated system user and protect the configuration directory and backups. macOS and Windows use their system key stores by default. These Linux deployment instructions follow the CLI implementation; this release has no prebuilt Linux binary and this session has not verified a native Linux deployment.
@@ -98,7 +140,9 @@ Keep the server running. In another terminal on the server, replace `YOUR_SERVER
 
 ```bash
 export RGIT_HOME="$HOME/.local/share/rustgit-server"
-"$HOME/.local/bin/rgit" --insecure-file-keys   -C "$HOME/rustgit-repos/myproject.rgit" invite create   --role write --expires 24h --hint tcp://YOUR_SERVER_IP:7878
+"$HOME/.local/bin/rgit" --insecure-file-keys \
+  -C "$HOME/rustgit-repos/myproject.rgit" invite create \
+  --role write --expires 24h --hint tcp://YOUR_SERVER_IP:7878
 ```
 
 Allow clients to reach TCP port 7878 in the host firewall and, for a cloud server, its security group. Other devices cannot use `0.0.0.0` or `127.0.0.1` as the server address.

@@ -28,3 +28,7 @@ Thumbs.db
 .idea/
 /dhat-heap.json
 *.log
+
+# Python benchmark caches
+__pycache__/
+*.py[cod]
