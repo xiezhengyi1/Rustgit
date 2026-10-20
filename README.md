@@ -1,116 +1,137 @@
-<p align="center"><img src="assets/branding/rustgit-icon.png" width="128" alt="RustGit 图标"></p>
+<p align="center"><img src="assets/branding/rustgit-icon.png" width="128" alt="RustGit"></p>
 
 # RustGit
 
 [English](README.en.md) · **简体中文**
 
-在自己的电脑上保存项目版本，并在 macOS 和 Windows 之间共享。RustGit 提供桌面界面和 Rust 命令行引擎，可以由你自己的电脑托管项目，无需部署中心服务器。
+**给项目存版本，让多台电脑共享同一份工作。**
 
-> RustGit 使用独立的 `.rgit` 仓库格式，目前不兼容 Git 仓库协议，也不能直接推送到 GitHub。本 GitHub 仓库用于发布 RustGit 的源码和安装包。
+RustGit 提供 macOS 和 Windows 桌面应用。你可以只在本机保存历史，也可以让一台电脑或服务器托管项目，其他设备连接后一起工作。
 
-## 下载安装
+## 为什么用 RustGit
 
-| 系统 | 下载 | 要求 |
-| --- | --- | --- |
-| macOS · Apple Silicon | [下载 DMG](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-macos-arm64.dmg) · [下载 ZIP](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-macos-arm64.zip) | macOS 14 或更新版本，M 系列芯片 |
-| Windows · x64 | [下载安装程序 EXE](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-windows-x64-setup.exe) | Windows 10 1809 或更新版本、Windows 11 |
+- **自己掌握项目数据。** 托管位置由你决定：自己的电脑、局域网主机，或可连接的服务器。
+- **一次完成提交和共享。** 选择文件、填写说明、点击「提交并共享」，本地保存后自动发送。发送失败可重试，已保存的版本不会丢失。
+- **减少重复保存和传输。** 引擎对文件分块、去重和压缩，共享时复用已存在的内容、传输缺少的数据。实际收益取决于文件类型和修改方式。
+- **把不该同步的文件留在本机。** 自动读取 `.gitignore` 和嵌套规则，也支持 `.rgitignore`，方便排除依赖、缓存和构建目录。
+- **跨平台协作。** macOS、Windows 使用同一套引擎和仓库格式，界面支持中文、英文。
+- **按设备控制访问。** 加密连接、邀请加入、读写权限，以及撤销设备授权。
 
-[全部 Release](https://github.com/xiezhengyi1/Rustgit/releases) · [SHA256 校验文件](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/SHA256SUMS)
+## 下载与安装
 
-- **macOS：** 打开 DMG，将 RustGit 拖进“应用程序”。当前包未经 Apple 公证；若系统阻止打开，可在“系统设置 → 隐私与安全性”中确认来源后选择“仍要打开”。当前未提供 Intel Mac 桌面安装包。
-- **Windows：** 运行 EXE，按提示安装。安装包未做代码签名，系统可能提示无法识别发布者。缺少 WebView2 时安装器会联网下载运行环境。
-
-## 开始使用
-
-### 只在本机保存版本
-
-1. 在“项目”中新建项目，或打开已有文件夹并初始化。
-2. 在“更改”中选择需要保存的文件，填写版本说明。
-3. 点击“提交版本”。之后可在“历史与分支”中查看、比较或恢复文件。
-
-左侧项目列表保留最近打开的项目，点击即可切换。
-
-### 在两台电脑之间共享
-
-1. **托管电脑：** 打开项目，在“共享”中选择托管此项目；让其他电脑连接时，开启局域网访问。
-2. **托管电脑：** 创建有相应读写权限的邀请，将邀请链接私下发给另一台电脑。
-3. **另一台电脑：** 在“项目”中使用邀请链接加入，选择文件夹，下载项目。
-4. **修改之后：** 在“更改”中填写说明并点击 **“提交并共享”**，一次完成本地保存和发送。
-5. **接收修改：** 在另一台电脑的“共享”中拉取并合并最新版本。
-
-托管电脑需要保持唤醒且 RustGit 正在运行。首次连接时，两台电脑需要能够通过局域网或已配置的网络连接互通。互联网连接及自建中继见 [Iroh 文档](docs/relay.md)。
-
-共享失败时，本地提交仍然保留；使用 **“重试共享”** 重新发送，无需再次提交。若别人已先更新共享分支，先拉取、处理合并，再共享。
-
-## 能做什么
-
-- **保存和恢复版本：** 按文件选择提交、查看差异、浏览历史、恢复文件和撤销提交。
-- **分支协作：** 创建和切换分支、合并，以及处理冲突。
-- **自己托管：** 加密连接、设备身份验证、一次性邀请、读写权限和撤销授权。
-- **遵守忽略规则：** 自动读取项目内的 `.gitignore`，支持嵌套规则；可用 `.rgitignore` 添加专用规则。
-- **减少重复存储：** 分块、去重及增量压缩，配有完整性检查和索引重建工具。
-- **中英界面：** macOS 原生 SwiftUI，Windows 使用 Tauri、React 和 WebView2。
-
-忽略规则适用于尚未跟踪的文件；已经提交的文件不会因为加入 `.gitignore` 就自动停止同步。`.git/` 和 `.rgit/` 始终排除。全局 Git 忽略规则和项目根目录之外的规则不读取。
-
-## 当前版本与验证范围
-
-`v0.1.0` 是早期版本。macOS Apple Silicon 桌面版已构建并运行；Windows x64 安装包已在实际 Windows 电脑上替换安装，并通过 UI“提交并共享”及第二副本拉取文件、校验哈希的测试。另验证了一个 3,425 文件、约 63 MB 的项目在 Windows 上完整落盘。
-
-这不代表所有系统环境和功能都已验证。Windows 的失败重试、取消路径有自动化覆盖，尚未完成对应的原生手动测试。Windows 不支持还原符号链接；跨平台共享时应排除依赖缓存、构建产物和 macOS 应用包。详细范围见 [Windows 文档](docs/windows.md) 和 [实现状态](docs/status.md)。
-
-## 从源码构建
-
-### Rust 引擎与 CLI
-
-基础引擎要求 Rust 1.89+；启用 Iroh 需要 Rust 1.91+。SQLite 随源码构建。
-
-```bash
-cargo build --release -p rustgit-cli --features iroh
-cargo test --workspace
-```
-
-```bash
-# 在项目目录中使用
-rgit init
-rgit config user.name "你的名字"
-rgit status
-rgit commit -m "第一个版本"
-rgit log
-```
-
-共享、邀请和权限管理的 CLI 示例见 [CLI 使用说明](docs/cli.md)。
-
-### macOS 桌面版
-
-需要 macOS、Rust 和 Xcode Command Line Tools（或 Xcode），Swift 6+。
-
-```bash
-scripts/macos/build-app.sh
-# 输出：dist/macos/ 下的 .app、.dmg 和 .zip
-```
-
-SDK 选择和测试方法见 [macOS 构建文档](docs/macos-app.md)。
-
-### Windows 桌面版
-
-在 Windows 上安装 Rust MSVC 工具链、Visual Studio 2022 C++ Build Tools 和 Node.js 20+，然后运行：
-
-```powershell
-.\scripts\windows\build.ps1
-# 输出：dist\windows\ 下的 EXE、MSI 和校验文件
-```
-
-也提供 [macOS 交叉构建脚本](scripts/windows/build-cross.sh)。详细要求和签名说明见 [Windows 构建文档](docs/windows.md)。
-
-## 项目结构与文档
-
-| 路径 | 内容 |
+| 系统 | 安装包 |
 | --- | --- |
-| `crates/` | Rust 存储引擎、版本控制、CLI、同步和传输 |
-| `apps/macos/` | macOS SwiftUI 桌面应用 |
-| `apps/windows/` | Windows Tauri、React 桌面应用 |
-| `packages/swift-client/` | Swift 与 CLI 的适配层 |
-| `scripts/` | 构建、打包及校验脚本 |
+| macOS · Apple Silicon（M 系列，macOS 14+） | [下载 DMG](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-macos-arm64.dmg) · [ZIP](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-macos-arm64.zip) |
+| Windows · x64（Windows 10 1809+ / Windows 11） | [下载 EXE 安装程序](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-windows-x64-setup.exe) |
 
-[仓库格式与恢复](docs/format.md) · [同步协议](docs/protocol.md) · [SSH](docs/ssh.md) · [局域网发现](docs/discovery.md) · [存储基准](docs/benchmarks.md) · [设计决策](docs/decisions.md)
+[全部版本与校验文件](https://github.com/xiezhengyi1/Rustgit/releases/tag/v0.1.0)
+
+macOS 打开 DMG，将 RustGit 拖进「应用程序」；Windows 运行 EXE 安装。当前 macOS 包未经 Apple 公证，Windows 包未签名，系统可能要求确认来源。Windows 缺少 WebView2 时，安装器会联网下载。
+
+## 怎么用
+
+### 1. 给本机项目保存第一个版本
+
+1. 打开 RustGit，在「项目」中新建项目，或打开已有文件夹并初始化。
+2. **先检查 `.gitignore`**，排除 `node_modules/`、构建目录等不需要共享的内容。
+3. 进入「更改」，勾选要保存的文件，填写版本说明。
+4. 点击 **「提交版本」**，完成本地保存。
+
+以后修改文件后，重复选择和提交即可。在「历史与分支」中查看差异、创建分支或恢复文件。最近打开的项目会保留在左侧，点击即可切换。
+
+### 2. 让另一台电脑加入
+
+**先在托管电脑操作：**
+
+1. 打开已提交过版本的项目，进入「共享」，选择 **托管此项目**。
+2. 开启局域网访问，让其他电脑能够连接。
+3. 创建邀请：只需要下载就给读取权限，需要协作修改就给读写权限。
+4. 将邀请链接私下发给另一台电脑。
+
+**再在另一台电脑操作：**
+
+1. 打开「项目」，使用邀请链接加入项目。
+2. 选择保存文件夹，等待下载完成。
+3. 打开文件夹，确认项目文件已下载。
+
+邀请通常只能使用一次；每台新设备需要各自的邀请。托管电脑需要保持唤醒，并让 RustGit 持续运行。
+
+### 3. 日常修改、发送和接收
+
+| 你要做什么 | 在哪里操作 |
+| --- | --- |
+| 把自己的修改给其他设备 | 「更改」→ 选择文件 → 填写说明 → **提交并共享** |
+| 接收别人的新版本 | 「共享」→ **拉取并合并** |
+| 发送失败后再试 | **重试共享**，不用重复提交 |
+| 两边都改了同一处 | 先拉取，处理冲突并提交，然后共享 |
+| 找回旧文件 | 「历史与分支」→ 选中版本 → 恢复相应文件 |
+
+「共享成功」表示托管端已收到版本；其他电脑仍需拉取，文件才会更新。
+
+## 可以用服务器托管吗？
+
+**可以。服务器运行 `rgit serve`，桌面端通过邀请连接。** 服务器不需要桌面界面，也不需要一直开着你的个人电脑。适合在常开主机、Linux 服务器或具备运行条件的 NAS 上集中保存共享历史。
+
+服务器保存的是 RustGit 仓库，提供版本同步；目前不提供类似 GitHub 的网页代码浏览和账号管理后台。一个 `serve` 进程托管一个项目，多个项目使用不同目录和端口。
+
+### 在 Linux 服务器上启动
+
+安装 Rust 1.89+ 和 C 编译工具后，在服务器上执行：
+
+```bash
+git clone https://github.com/xiezhengyi1/Rustgit.git
+cd Rustgit
+cargo build --release -p rustgit-cli
+mkdir -p "$HOME/.local/bin" "$HOME/rustgit-repos"
+install -m 755 target/release/rgit "$HOME/.local/bin/rgit"
+
+# 保持相同的配置目录，服务与管理命令都使用这个目录
+export RGIT_HOME="$HOME/.local/share/rustgit-server"
+"$HOME/.local/bin/rgit" --insecure-file-keys serve   --init "$HOME/rustgit-repos/myproject.rgit" --listen 0.0.0.0:7878
+```
+
+Linux 当前需要显式使用 `--insecure-file-keys`：私钥以仅所属用户可读的文件保存，未加密；**网络连接仍然经过身份验证和加密**。请使用专用系统用户，并保护配置目录及备份。macOS 和 Windows 默认使用系统钥匙串或凭据管理器。Linux 部署步骤基于 CLI 实现，当前发布未提供 Linux 预编译包，也未完成本次 Linux 原生部署验证。
+
+### 创建邀请，把本机项目上传
+
+保持上面的服务运行，在服务器的另一个终端执行，将 `YOUR_SERVER_IP` 换成客户端可以访问的 IP 或域名：
+
+```bash
+export RGIT_HOME="$HOME/.local/share/rustgit-server"
+"$HOME/.local/bin/rgit" --insecure-file-keys   -C "$HOME/rustgit-repos/myproject.rgit" invite create   --role write --expires 24h --hint tcp://YOUR_SERVER_IP:7878
+```
+
+需要允许客户端访问服务器的 TCP 7878 端口；使用云服务器时，同时检查云安全组和系统防火墙。不要把 `0.0.0.0` 或 `127.0.0.1` 当成其他设备的连接地址。
+
+**上传已有 RustGit 项目：** 在本机项目目录中，用邀请绑定服务器，再发送已有提交：
+
+```bash
+rgit join 'projectapp://join/这里替换成完整邀请内容' --add-remote
+rgit push
+```
+
+之后用桌面应用打开这个项目，就可以日常点击「提交并共享」。若项目已有其他 `origin`，请先确认连接目标；也可以用 `--remote server` 添加不同名称的连接。
+
+**让其他设备下载：** 在服务器为每台设备另建邀请，然后在桌面应用中加入，或运行：
+
+```bash
+rgit join 'projectapp://join/这里替换成另一份完整邀请内容' myproject
+```
+
+新建的服务器仓库是空的，需要先上传第一个版本，再让其他设备下载；否则工作文件夹中可能只有 `.rgit`。
+
+常驻运行、自动重启、备份、SSH 连接和公网中继见 **[服务器托管指南](docs/server.md)**。
+
+## 常见问题
+
+**能直接连接 GitHub 或已有 Git 仓库吗？** 目前不能。RustGit 使用独立的 `.rgit` 格式，不兼容 Git 仓库协议。这个 GitHub 仓库用于发布软件源码和安装包。
+
+**为什么加了 `.gitignore` 仍会同步？** 忽略规则作用于未跟踪文件；已经提交过的文件仍受版本管理。应在第一次提交前设置规则。`.git/`、`.rgit/` 始终排除，全局 Git 忽略规则不读取。
+
+**Windows 和 Mac 共享时有什么要注意？** Windows 当前不支持恢复符号链接。应排除依赖缓存、构建目录和 macOS 应用包，避免把平台产物作为项目源码共享。
+
+**现在能用到什么程度？** 当前是 `v0.1.0` 早期版本。macOS 应用已运行验证；Windows 安装替换、UI「提交并共享」和第二副本拉取文件并校验哈希已通过实测。重要项目请保留独立备份。完整验证范围见 [实现状态](docs/status.md)。
+
+## 开发文档
+
+[CLI 使用](docs/cli.md) · [服务器托管](docs/server.md) · [macOS 构建](docs/macos-app.md) · [Windows 构建](docs/windows.md) · [存储与恢复](docs/format.md) · [存储基准](docs/benchmarks.md) · [设计决策](docs/decisions.md)

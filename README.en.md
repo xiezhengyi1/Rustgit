@@ -1,116 +1,137 @@
-<p align="center"><img src="assets/branding/rustgit-icon.png" width="128" alt="RustGit icon"></p>
+<p align="center"><img src="assets/branding/rustgit-icon.png" width="128" alt="RustGit"></p>
 
 # RustGit
 
 **English** · [简体中文](README.md)
 
-Save project versions on your own computer and share them between macOS and Windows. RustGit includes desktop apps and a Rust CLI engine. You can host a project from your own computer without deploying a central server.
+**Keep project versions and share your work across computers.**
 
-> RustGit uses its own `.rgit` repository format. It does not currently support Git repository protocols or pushing directly to GitHub. This GitHub repository hosts RustGit's source code and release downloads.
+RustGit provides macOS and Windows desktop apps. Save history locally, or host a project on your own computer or server so other devices can work with it.
+
+## Why RustGit
+
+- **Choose where your data lives.** Host on your computer, a LAN machine, or a reachable server.
+- **Commit and share in one action.** Select files, describe the change, and click **Commit and share**. Failed sends can be retried without losing the saved version.
+- **Reuse existing data.** Chunking, deduplication, and compression reduce repeated storage; synchronization reuses existing content and sends missing data. Savings depend on the files and changes.
+- **Keep generated files local.** Project `.gitignore` files, nested rules, and `.rgitignore` help exclude dependencies, caches, and build outputs.
+- **Work across platforms.** macOS and Windows use the same engine and repository format, with English and Chinese interfaces.
+- **Control access per device.** Encrypted connections, invitations, access roles, and device revocation.
 
 ## Download and install
 
-| Platform | Download | Requirements |
-| --- | --- | --- |
-| macOS · Apple Silicon | [Download DMG](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-macos-arm64.dmg) · [Download ZIP](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-macos-arm64.zip) | macOS 14 or later, Apple Silicon |
-| Windows · x64 | [Download EXE installer](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-windows-x64-setup.exe) | Windows 10 1809 or later, or Windows 11 |
-
-[All releases](https://github.com/xiezhengyi1/Rustgit/releases) · [SHA256 checksums](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/SHA256SUMS)
-
-- **macOS:** Open the DMG and drag RustGit into Applications. The current app is not notarized by Apple. If macOS blocks it, confirm the download's source and use **Open Anyway** in System Settings → Privacy & Security. An Intel Mac desktop package is not included.
-- **Windows:** Run the EXE and follow the installer. It is unsigned, so Windows may report an unknown publisher. The installer downloads WebView2 if the runtime is missing.
-
-## Get started
-
-### Save versions locally
-
-1. Create a project in **Projects**, or open an existing folder and initialize it.
-2. Select files in **Changes** and describe the version.
-3. Click **Commit version**. Use **History & branches** to inspect, compare, or restore files later.
-
-Recently opened projects stay in the sidebar for quick switching.
-
-### Share between two computers
-
-1. **Hosting computer:** Open the project and host it from **Sharing**. Enable local-network access when other computers need to connect.
-2. **Hosting computer:** Create an invitation with the appropriate permissions and send the link privately to the other computer.
-3. **Other computer:** Join through the invitation in **Projects**, choose a folder, and download the project.
-4. **After editing:** Describe the change in **Changes** and click **Commit and share** to save locally and send it in one action.
-5. **Receive changes:** Pull and merge the latest version from **Sharing** on the other computer.
-
-The hosting computer must stay awake with RustGit running. Both computers need a reachable LAN address or another configured connection. For internet connections and a self-hosted relay, see the [Iroh guide](docs/relay.md).
-
-If sharing fails, your local commit is retained. Use **Retry sharing** to send it without creating another commit. If someone updated the shared branch first, pull, resolve any merge conflicts, and share again.
-
-## Features
-
-- **Version history and recovery:** Select files to commit, inspect diffs, browse history, restore files, and revert commits.
-- **Branches:** Create, switch, merge, and resolve conflicts.
-- **Self-hosted sharing:** Encrypted connections, device authentication, single-use invitations, access roles, and revocation.
-- **Ignore rules:** Automatically respects project `.gitignore` files, including nested rules; add RustGit-specific rules in `.rgitignore`.
-- **Storage efficiency:** Chunking, deduplication, delta compression, integrity checks, and index recovery.
-- **English and Chinese:** Native SwiftUI on macOS; Tauri, React, and WebView2 on Windows.
-
-Ignore rules apply to untracked files. Adding an already committed file to `.gitignore` does not stop it from syncing. `.git/` and `.rgit/` are always excluded. Global Git ignores and rules above the project root are not read.
-
-## Release status and verification
-
-`v0.1.0` is an early release. The macOS Apple Silicon desktop app has been built and run. The Windows x64 installer has been installed over the previous version on a real Windows computer. Clicking **Commit and share** published a commit, and a second working copy pulled the file with a matching SHA256 hash. A separate project containing 3,425 files, about 63 MB, was also verified on disk on Windows.
-
-This does not establish coverage for every environment or feature. Windows failure, cancellation, and retry paths have automated coverage but have not yet received equivalent native manual testing. Windows cannot restore symbolic links; exclude dependency caches, build outputs, and macOS app bundles from cross-platform projects. See the [Windows guide](docs/windows.md) and [implementation status](docs/status.md) for details.
-
-## Build from source
-
-### Rust engine and CLI
-
-The base engine requires Rust 1.89+. Iroh support requires Rust 1.91+. SQLite is bundled.
-
-```bash
-cargo build --release -p rustgit-cli --features iroh
-cargo test --workspace
-```
-
-```bash
-# Run inside a project folder
-rgit init
-rgit config user.name "Your name"
-rgit status
-rgit commit -m "First version"
-rgit log
-```
-
-For hosting, invitations, and permissions, see the [CLI guide](docs/cli.md).
-
-### macOS desktop app
-
-Requires macOS, Rust, and Xcode Command Line Tools or Xcode, with Swift 6+.
-
-```bash
-scripts/macos/build-app.sh
-# Output: .app, .dmg, and .zip in dist/macos/
-```
-
-See the [macOS build guide](docs/macos-app.md) for SDK selection and testing.
-
-### Windows desktop app
-
-On Windows, install Rust with the MSVC toolchain, Visual Studio 2022 C++ Build Tools, and Node.js 20+, then run:
-
-```powershell
-.\scripts\windows\build.ps1
-# Output: EXE, MSI, and checksums in dist\windows\
-```
-
-A [macOS cross-build script](scripts/windows/build-cross.sh) is also available. See the [Windows build guide](docs/windows.md) for prerequisites and signing.
-
-## Source layout and documentation
-
-| Path | Contents |
+| Platform | Installer |
 | --- | --- |
-| `crates/` | Rust storage, version control, CLI, synchronization, and transports |
-| `apps/macos/` | macOS SwiftUI desktop app |
-| `apps/windows/` | Windows Tauri and React desktop app |
-| `packages/swift-client/` | Swift adapter for the CLI |
-| `scripts/` | Build, packaging, and verification scripts |
+| macOS · Apple Silicon (M-series, macOS 14+) | [Download DMG](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-macos-arm64.dmg) · [ZIP](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-macos-arm64.zip) |
+| Windows · x64 (Windows 10 1809+ / Windows 11) | [Download EXE installer](https://github.com/xiezhengyi1/Rustgit/releases/download/v0.1.0/RustGit-0.1.0-windows-x64-setup.exe) |
 
-[Repository format and recovery](docs/format.md) · [Sync protocol](docs/protocol.md) · [SSH](docs/ssh.md) · [LAN discovery](docs/discovery.md) · [Storage benchmarks](docs/benchmarks.md) · [Design decisions](docs/decisions.md)
+[All release files and checksums](https://github.com/xiezhengyi1/Rustgit/releases/tag/v0.1.0)
+
+On macOS, open the DMG and drag RustGit into Applications. On Windows, run the EXE. The macOS package is not notarized and the Windows installer is unsigned, so your system may ask you to confirm the source. The installer downloads WebView2 if it is missing.
+
+## How to use it
+
+### 1. Save your first local version
+
+1. Open RustGit. Create a project in **Projects**, or open an existing folder and initialize it.
+2. **Check `.gitignore` first.** Exclude dependencies such as `node_modules/`, caches, and build outputs.
+3. In **Changes**, select the files to save and describe the version.
+4. Click **Commit version** to save locally.
+
+Repeat after editing. Use **History & branches** to inspect changes, create branches, or restore files. Recent projects stay in the sidebar for quick switching.
+
+### 2. Connect another computer
+
+**On the hosting computer:**
+
+1. Open a project with at least one commit. In **Sharing**, choose to host the project.
+2. Enable local-network access so other computers can connect.
+3. Create a read invitation for downloads, or a write invitation for collaboration.
+4. Send the invitation link privately to the other computer.
+
+**On the other computer:**
+
+1. Join through the invitation in **Projects**.
+2. Choose a folder and wait for the download.
+3. Open the folder and confirm the project files are present.
+
+Invitations are normally single-use; create a separate one for each new device. The hosting computer must remain awake with RustGit running.
+
+### 3. Edit, send, and receive
+
+| What you want to do | Action |
+| --- | --- |
+| Send your edits | **Changes** → select files → describe the change → **Commit and share** |
+| Receive another device's updates | **Sharing** → **Pull and merge** |
+| Retry a failed send | **Retry sharing**, without committing again |
+| Resolve overlapping edits | Pull, resolve conflicts, commit, then share |
+| Recover an older file | **History & branches** → select a version → restore the file |
+
+Successful sharing means the host received the version. Other computers must still pull to update their files.
+
+## Can I host it on a server?
+
+**Yes. Run `rgit serve` on the server and connect desktop clients through invitations.** The server does not need a desktop interface, and your personal computer does not need to stay on. A persistent host, Linux server, or suitably configured NAS can store the shared history.
+
+The server provides RustGit repository synchronization. It currently has no GitHub-style web code browser or account-management dashboard. Each `serve` process hosts one project; use separate directories and ports for multiple projects.
+
+### Start a Linux server
+
+Install Rust 1.89+ and C build tools, then run on the server:
+
+```bash
+git clone https://github.com/xiezhengyi1/Rustgit.git
+cd Rustgit
+cargo build --release -p rustgit-cli
+mkdir -p "$HOME/.local/bin" "$HOME/rustgit-repos"
+install -m 755 target/release/rgit "$HOME/.local/bin/rgit"
+
+# Use this same directory for the service and administration commands
+export RGIT_HOME="$HOME/.local/share/rustgit-server"
+"$HOME/.local/bin/rgit" --insecure-file-keys serve   --init "$HOME/rustgit-repos/myproject.rgit" --listen 0.0.0.0:7878
+```
+
+Linux currently requires explicit `--insecure-file-keys`: private keys are unencrypted files readable only by their owner. **Network connections still require authentication and encryption.** Use a dedicated system user and protect the configuration directory and backups. macOS and Windows use their system key stores by default. These Linux deployment instructions follow the CLI implementation; this release has no prebuilt Linux binary and this session has not verified a native Linux deployment.
+
+### Invite a computer and upload an existing project
+
+Keep the server running. In another terminal on the server, replace `YOUR_SERVER_IP` with an address or domain reachable by clients:
+
+```bash
+export RGIT_HOME="$HOME/.local/share/rustgit-server"
+"$HOME/.local/bin/rgit" --insecure-file-keys   -C "$HOME/rustgit-repos/myproject.rgit" invite create   --role write --expires 24h --hint tcp://YOUR_SERVER_IP:7878
+```
+
+Allow clients to reach TCP port 7878 in the host firewall and, for a cloud server, its security group. Other devices cannot use `0.0.0.0` or `127.0.0.1` as the server address.
+
+**Upload an existing RustGit project:** Run inside your local project, using the complete invitation:
+
+```bash
+rgit join 'projectapp://join/REPLACE_WITH_THE_COMPLETE_INVITATION' --add-remote
+rgit push
+```
+
+Open that project in the desktop app and use **Commit and share** afterward. If `origin` already points somewhere else, check the intended connection first; use `--remote server` to add a differently named connection.
+
+**Download on other devices:** Create a separate invitation for each device. Join in the desktop app, or run:
+
+```bash
+rgit join 'projectapp://join/REPLACE_WITH_ANOTHER_COMPLETE_INVITATION' myproject
+```
+
+A newly initialized hosted repository is empty. Upload the first version before other computers download it; otherwise their working folder may contain only `.rgit`.
+
+For a persistent service, automatic restart, backups, SSH, and internet relays, see the **[server hosting guide](docs/server.md)**.
+
+## Common questions
+
+**Can it connect directly to GitHub or an existing Git repository?** Not currently. RustGit uses its own `.rgit` format and does not support Git repository protocols. This GitHub repository distributes the software's source and installers.
+
+**Why does an ignored file still sync?** Ignore rules apply to untracked files; previously committed files remain tracked. Set rules before the first commit. `.git/` and `.rgit/` are always excluded. Global Git ignore rules are not read.
+
+**What matters when sharing between Windows and Mac?** Windows cannot currently restore symbolic links. Exclude dependency caches, build outputs, and macOS app bundles from cross-platform projects.
+
+**How mature is it?** `v0.1.0` is an early release. The macOS app has been run; native Windows replacement installation, the actual **Commit and share** UI, and a second copy pulling a file with a matching hash have passed smoke tests. Keep independent backups of important projects. See [implementation status](docs/status.md) for the full verification scope.
+
+## Developer documentation
+
+[CLI usage](docs/cli.md) · [Server hosting](docs/server.md) · [macOS build](docs/macos-app.md) · [Windows build](docs/windows.md) · [Storage and recovery](docs/format.md) · [Storage benchmarks](docs/benchmarks.md) · [Design decisions](docs/decisions.md)
