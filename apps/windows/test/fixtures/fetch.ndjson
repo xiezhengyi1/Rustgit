@@ -1,0 +1,4 @@
+{"event":"progress","phase":"plan","done":0,"total":0}
+{"event":"progress","phase":"download","done":5,"total":12,"bytes":40960}
+{"event":"progress","phase":"download","done":12,"total":12,"bytes":98304}
+{"ok":true,"data":{"objects_received":12,"bytes_received":98304,"updated":[{"ref":"remotes/origin/main","old":"f28d5b0d6f8be0da8446dabe79044cb9ed0ffa3150a003936155409fe778b885","new":"7ed6a8377b92b49472195f1201af304341daf4abb3643f837eafb38066111f6d"}]}}

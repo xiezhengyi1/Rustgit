@@ -1,0 +1,22 @@
+[package]
+name = "rustgit-protocol"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+base64 = "0.23.1"
+blake3 = "1.8.7"
+crc32fast = "1.5.2"
+ed25519-dalek = { version = "3.0.0", features = ["zeroize"] }
+getrandom = "0.4"
+rustgit-core = { path = "../core" }
+rustgit-store = { path = "../store" }
+snow = { version = "0.10.0", features = ["ring-accelerated"] }
+thiserror = "2.0.21"
+zeroize = "1"
+zstd = "0.14.3"
+
+[dev-dependencies]
+tempfile = "3.27.0"

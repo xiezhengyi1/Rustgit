@@ -1,0 +1,12 @@
+[{"metric":"TCP connect + 1 round trip (median of 300)","unit":"ms","plaintext":0.1047,"encrypted":1.4985},
+{"metric":"full client connect + Hello (host accept loop polls every 5 ms)","unit":"ms","plaintext":6.3687,"encrypted":6.2884},
+{"metric":"raw 4 MiB-frame throughput (512 MiB, incompressible)","unit":"MiB/s","plaintext":1251.4575,"encrypted":460.7115},
+{"metric":"raw wire bytes sent per payload byte","unit":"x","plaintext":1.0000,"encrypted":1.0003},
+{"metric":"push 64 MiB incompressible: time (median of 5)","unit":"s","plaintext":1.2066,"encrypted":1.0545},
+{"metric":"push 64 MiB incompressible: wire bytes sent","unit":"B","plaintext":67116604.0000,"encrypted":67135689.0000},
+{"metric":"fetch 64 MiB incompressible: time (median of 5)","unit":"s","plaintext":0.6182,"encrypted":0.6632},
+{"metric":"fetch 64 MiB incompressible: wire bytes received","unit":"B","plaintext":67116646.0000,"encrypted":67135654.0000},
+{"metric":"push 64 MiB compressible: time (median of 5)","unit":"s","plaintext":0.2981,"encrypted":0.2721},
+{"metric":"push 64 MiB compressible: wire bytes sent","unit":"B","plaintext":5864.0000,"encrypted":6373.0000},
+{"metric":"fetch 64 MiB compressible: time (median of 5)","unit":"s","plaintext":0.2128,"encrypted":0.2273},
+{"metric":"fetch 64 MiB compressible: wire bytes received","unit":"B","plaintext":3606.0000,"encrypted":3894.0000}]

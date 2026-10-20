@@ -1,0 +1,160 @@
+name: windows
+
+# Builds and tests the engine and the Windows desktop app natively on Windows and uploads the
+# installers. A manual native Windows smoke check has covered replacement installation, UI
+# commit-and-share and pulling files; this workflow provides broader native build/test coverage.
+# The installers are UNSIGNED. See docs/windows.md for signing.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "apps/windows/**"
+      - "crates/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "scripts/windows/**"
+      - ".github/workflows/windows.yml"
+  pull_request:
+    paths:
+      - "apps/windows/**"
+      - "crates/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
+      - "scripts/windows/**"
+      - ".github/workflows/windows.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  engine:
+    name: engine tests (windows-latest)
+    runs-on: windows-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+      - name: cargo test --workspace
+        run: cargo test --workspace --release
+
+  app:
+    name: desktop app (windows-latest)
+    runs-on: windows-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            . -> target
+            apps/windows/src-tauri -> target
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: apps/windows/package-lock.json
+
+      - name: Build rgit.exe
+        run: cargo build --release -p rustgit-cli --features iroh
+
+      - name: rgit.exe speaks the JSON interface
+        shell: pwsh
+        run: |
+          $v = & target\release\rgit.exe --json version
+          Write-Host $v
+          if ($v -notmatch '"json_interface":1') { throw "unexpected: $v" }
+
+      - name: Install UI dependencies
+        working-directory: apps/windows
+        run: npm ci
+
+      - name: Stage the sidecar
+        working-directory: apps/windows
+        shell: pwsh
+        run: node scripts/stage-sidecar.mjs --from "$env:GITHUB_WORKSPACE\target\release\rgit.exe"
+
+      - name: Type check
+        working-directory: apps/windows
+        run: npm run typecheck
+
+      - name: UI and client tests (fake rgit, recorded real output, and the live rgit.exe)
+        working-directory: apps/windows
+        shell: pwsh
+        env:
+          RGIT_BIN: ${{ github.workspace }}\target\release\rgit.exe
+        run: npm test
+
+      - name: Tauri shell tests (includes the per-user Run-key test)
+        working-directory: apps/windows/src-tauri
+        shell: pwsh
+        env:
+          RGIT_BIN: ${{ github.workspace }}\target\release\rgit.exe
+        run: cargo test
+
+      - name: Build installers (NSIS and MSI)
+        working-directory: apps/windows
+        run: npm run tauri -- build --bundles nsis,msi
+
+      - name: Collect installers and checksums
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path dist\windows | Out-Null
+          Get-ChildItem apps\windows\src-tauri\target\release\bundle -Recurse -Include *.exe,*.msi |
+            Where-Object { $_.FullName -match '\\(nsis|msi)\\' } |
+            ForEach-Object { Copy-Item $_.FullName dist\windows\ }
+          $files = Get-ChildItem dist\windows -File
+          if ($files.Count -eq 0) { throw 'no installers were produced' }
+          $files | ForEach-Object { '{0}  {1}' -f (Get-FileHash -Algorithm SHA256 $_.FullName).Hash.ToLower(), $_.Name } |
+            Set-Content dist\windows\SHA256SUMS -Encoding ASCII
+          Get-Content dist\windows\SHA256SUMS
+
+      - name: Smoke test - silent per-user install of the NSIS installer
+        shell: pwsh
+        run: |
+          $setup = Get-ChildItem dist\windows -Filter *-setup.exe | Select-Object -First 1
+          if (-not $setup) { throw 'NSIS installer not found' }
+          $dir = Join-Path $env:RUNNER_TEMP 'RustGitInstall'
+          $p = Start-Process -FilePath $setup.FullName -ArgumentList '/S', "/D=$dir" -Wait -PassThru
+          if ($p.ExitCode -ne 0) { throw "installer exit code $($p.ExitCode)" }
+          Get-ChildItem $dir | Format-Table Name, Length
+          foreach ($f in 'rustgit-windows.exe', 'rgit.exe') {
+            if (-not (Test-Path (Join-Path $dir $f))) { throw "$f missing from the install directory" }
+          }
+          $v = & (Join-Path $dir 'rgit.exe') --json version
+          Write-Host "installed sidecar: $v"
+          if ($v -notmatch '"json_interface":1') { throw 'installed rgit.exe does not answer --json version' }
+
+      - name: Smoke test - the installed app starts and stays up for 15 seconds
+        shell: pwsh
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP 'RustGitInstall'
+          $app = Start-Process -FilePath (Join-Path $dir 'rustgit-windows.exe') -ArgumentList '--background' -PassThru
+          Start-Sleep -Seconds 15
+          if ($app.HasExited) { throw "app exited early with code $($app.ExitCode)" }
+          Write-Host "app still running (pid $($app.Id)); stopping it"
+          Stop-Process -Id $app.Id -Force
+
+      - name: Smoke test - uninstall
+        shell: pwsh
+        run: |
+          $dir = Join-Path $env:RUNNER_TEMP 'RustGitInstall'
+          $u = Get-ChildItem $dir -Filter 'uninstall*.exe' | Select-Object -First 1
+          if (-not $u) { throw 'uninstaller not found' }
+          $p = Start-Process -FilePath $u.FullName -ArgumentList '/S' -Wait -PassThru
+          Write-Host "uninstaller exit code $($p.ExitCode)"
+
+      - name: Upload installers (UNSIGNED)
+        uses: actions/upload-artifact@v4
+        with:
+          name: rustgit-windows-installers-unsigned
+          path: dist/windows/*
+          if-no-files-found: error

@@ -1,0 +1,19 @@
+[workspace]
+resolver = "2"
+members = ["crates/store", "crates/core", "crates/protocol", "crates/host", "crates/cli", "crates/transport-ssh", "crates/discovery", "crates/transport-iroh", "benchmarks"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+rust-version = "1.89"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+debug = false
+
+# Release build with symbols, for heap profiling (--features dhat-heap).
+[profile.profiling]
+inherits = "release"
+debug = true

@@ -1,0 +1,5 @@
+Generated with the built-in image_gen tool on 2026-10-20.
+
+Use case: logo-brand. Asset type: final application icon for RustGit, a native desktop version-control app written in Rust. Create one polished, highly legible 1024x1024 square app icon. A minimal sculpted burnt-orange copper crab emblem whose shell elegantly incorporates a three-node Git branch graph in dark negative space; chunky geometric claws and a few simple legs, confident and friendly but professional. Centered on a deep charcoal / midnight graphite rounded-square tile with a very subtle soft bevel and controlled warm highlight. Bold clean silhouette, ample consistent inset, readable down to 32px. Front-on orthographic icon, restrained premium macOS utility aesthetic, almost vector-like clean surfaces, no noisy textures, no tiny decorative details. Tile fills roughly 88% of the square canvas with transparent outer corners and a small transparent margin. No letters, no text, no wordmark, no watermark, no surrounding scene. The branch nodes must be unmistakable but integrated naturally into the crab carapace; copper orange and graphite only.
+
+transparent_background: true

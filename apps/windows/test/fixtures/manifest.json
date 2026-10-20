@@ -1,0 +1,363 @@
+{
+  "source": "UI scenarios: hand-written from docs/gui-interface.md; sync, stats, shelves, version, remote entries point at ../fixtures-real (captured from the real rgit). Regenerate the real ones with `npm run capture-fixtures`.",
+  "recordings": [
+    {
+      "argv": [
+        "device",
+        "id"
+      ],
+      "file": "device.identity.json"
+    },
+    {
+      "argv": [
+        "discover",
+        "--watch"
+      ],
+      "file": "discovery.empty.ndjson",
+      "hang": true
+    },
+    {
+      "argv": [
+        "version"
+      ],
+      "file": "../fixtures-real/version.json"
+    },
+    {
+      "argv": [
+        "init"
+      ],
+      "file": "init.json"
+    },
+    {
+      "argv": [
+        "init",
+        "--branch",
+        "*"
+      ],
+      "file": "init.json"
+    },
+    {
+      "argv": [
+        "status"
+      ],
+      "file": "status.dirty.json"
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "*"
+      ],
+      "file": "commit.json"
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "*",
+        "*"
+      ],
+      "file": "commit.json"
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "*",
+        "**"
+      ],
+      "file": "commit.json"
+    },
+    {
+      "argv": [
+        "log",
+        "-n",
+        "*"
+      ],
+      "file": "log.json"
+    },
+    {
+      "argv": [
+        "log",
+        "-n",
+        "*",
+        "*"
+      ],
+      "file": "log.json"
+    },
+    {
+      "argv": [
+        "show",
+        "*"
+      ],
+      "file": "show.json"
+    },
+    {
+      "argv": [
+        "diff"
+      ],
+      "file": "diff.json"
+    },
+    {
+      "argv": [
+        "branch"
+      ],
+      "file": "branch.json"
+    },
+    {
+      "argv": [
+        "branch",
+        "experiment"
+      ],
+      "file": "branch.create.json"
+    },
+    {
+      "argv": [
+        "branch",
+        "dup"
+      ],
+      "file": "branch.exists.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "branch",
+        "*",
+        "--from",
+        "*"
+      ],
+      "file": "branch.create.json"
+    },
+    {
+      "argv": [
+        "branch",
+        "-d",
+        "*"
+      ],
+      "file": "branch.create.json"
+    },
+    {
+      "argv": [
+        "switch",
+        "feature/search"
+      ],
+      "file": "switch.json"
+    },
+    {
+      "argv": [
+        "switch",
+        "dirty"
+      ],
+      "file": "switch.dirty.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "switch",
+        "-c",
+        "*"
+      ],
+      "file": "switch.json"
+    },
+    {
+      "argv": [
+        "merge",
+        "feature/search"
+      ],
+      "file": "merge.clean.json"
+    },
+    {
+      "argv": [
+        "merge",
+        "conflicting"
+      ],
+      "file": "merge.conflicts.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "merge",
+        "--abort"
+      ],
+      "file": "restore.json"
+    },
+    {
+      "argv": [
+        "resolve",
+        "*"
+      ],
+      "file": "resolve.json"
+    },
+    {
+      "argv": [
+        "resolve",
+        "*",
+        "--ours"
+      ],
+      "file": "resolve.json"
+    },
+    {
+      "argv": [
+        "resolve",
+        "*",
+        "--theirs"
+      ],
+      "file": "resolve.json"
+    },
+    {
+      "argv": [
+        "restore",
+        "--from",
+        "*",
+        "*"
+      ],
+      "file": "restore.json"
+    },
+    {
+      "argv": [
+        "restore",
+        "--from",
+        "*",
+        "--force",
+        "*"
+      ],
+      "file": "restore.json"
+    },
+    {
+      "argv": [
+        "restore",
+        "--from",
+        "dirty",
+        "*"
+      ],
+      "file": "restore.dirty.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "revert",
+        "*"
+      ],
+      "file": "revert.json"
+    },
+    {
+      "argv": [
+        "shelve",
+        "-m",
+        "*"
+      ],
+      "file": "shelve.json"
+    },
+    {
+      "argv": [
+        "shelves"
+      ],
+      "file": "../fixtures-real/shelves.json"
+    },
+    {
+      "argv": [
+        "unshelve",
+        "*"
+      ],
+      "file": "../fixtures-real/unshelve.json"
+    },
+    {
+      "argv": [
+        "shelf-drop",
+        "*"
+      ],
+      "file": "../fixtures-real/resolve.ours.json"
+    },
+    {
+      "argv": [
+        "stats"
+      ],
+      "file": "../fixtures-real/stats.json"
+    },
+    {
+      "argv": [
+        "verify"
+      ],
+      "file": "../fixtures-real/verify.json"
+    },
+    {
+      "argv": [
+        "gc"
+      ],
+      "file": "gc.ndjson"
+    },
+    {
+      "argv": [
+        "gc",
+        "--aggressive"
+      ],
+      "file": "gc.ndjson"
+    },
+    {
+      "argv": [
+        "reindex"
+      ],
+      "file": "../fixtures-real/reindex.json"
+    },
+    {
+      "argv": [
+        "remote"
+      ],
+      "file": "remote.json"
+    },
+    {
+      "argv": [
+        "remote",
+        "add",
+        "*",
+        "*"
+      ],
+      "file": "../fixtures-real/remote.add.json"
+    },
+    {
+      "argv": [
+        "fetch"
+      ],
+      "file": "../fixtures-real/fetch.ndjson"
+    },
+    {
+      "argv": [
+        "push"
+      ],
+      "file": "../fixtures-real/push.first.ndjson"
+    },
+    {
+      "argv": [
+        "pull"
+      ],
+      "file": "../fixtures-real/pull.ndjson"
+    },
+    {
+      "argv": [
+        "clone",
+        "tcp://127.0.0.1:7878",
+        "*"
+      ],
+      "file": "../fixtures-real/clone.json"
+    },
+    {
+      "argv": [
+        "clone",
+        "tcp://rejects",
+        "*"
+      ],
+      "file": "push.rejected.ndjson",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "serve",
+        "*",
+        "--listen",
+        "*"
+      ],
+      "file": "serve.ndjson",
+      "hang": true
+    }
+  ]
+}

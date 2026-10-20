@@ -1,0 +1,3 @@
+import RustGitKit
+
+RustGitApp.main()

@@ -1,0 +1,30 @@
+# Build outputs and dependency caches
+/target/
+/dist/
+**/.build/
+**/.swiftpm/
+**/node_modules/
+/apps/windows/dist/
+/apps/windows/src-tauri/target/
+/apps/windows/src-tauri/gen/
+/apps/windows/src-tauri/binaries/*
+!/apps/windows/src-tauri/binaries/.gitkeep
+/apps/windows/test/.tmp/
+
+# Local repository data, credentials, and machine settings
+**/.rgit/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# OS, editors, and profiling output
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+/dhat-heap.json
+*.log

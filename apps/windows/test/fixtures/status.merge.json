@@ -1,0 +1,1 @@
+{"ok":true,"data":{"branch":"main","head":"7ed6a8377b92b49472195f1201af304341daf4abb3643f837eafb38066111f6d","changes":[{"path":"docs/readme.md","kind":"modified"}],"skipped":[],"merge":{"kind":"merge","label":"feature/search"},"conflicts":[{"path":"docs/readme.md","kind":"content","resolved":false},{"path":"logo.png","kind":"binary","resolved":true}],"ahead":0,"behind":0}}

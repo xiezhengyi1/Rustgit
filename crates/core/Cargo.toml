@@ -1,0 +1,20 @@
+[package]
+name = "rustgit-core"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+chrono = { version = "0.4.45", default-features = false, features = ["clock", "std"] }
+diffy = "0.5.2"
+ignore = "0.4.30"
+rusqlite = { version = "0.40.2", features = ["bundled"] }
+rustgit-store = { path = "../store" }
+similar = "3.2.0"
+thiserror = "2.0.21"
+unicode-normalization = "0.1.26"
+uuid = { version = "1.26.1", features = ["v4"] }
+
+[dev-dependencies]
+tempfile = "3.27.0"

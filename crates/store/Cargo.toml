@@ -1,0 +1,16 @@
+[package]
+name = "rustgit-store"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+blake3 = "1.8.7"
+crc32fast = "1.5.2"
+rusqlite = { version = "0.40.2", features = ["bundled"] }
+thiserror = "2.0.21"
+zstd = "0.14.3"
+
+[dev-dependencies]
+tempfile = "3.27.0"

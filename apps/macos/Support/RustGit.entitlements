@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Hardened runtime needs no exceptions: no JIT, no unsigned plug-ins, no dylib injection.
+         The app is not sandboxed because it must read and write user-chosen project folders and
+         spawn the bundled rgit. Network: rgit connects out (tcp://) and listens on 127.0.0.1. -->
+</dict>
+</plist>

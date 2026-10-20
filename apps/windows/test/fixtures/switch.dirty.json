@@ -1,0 +1,1 @@
+{"ok":false,"error":{"code":"dirty_working_tree","message":"uncommitted changes would be overwritten","paths":["docs/readme.md"]}}

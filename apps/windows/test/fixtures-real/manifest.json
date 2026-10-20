@@ -1,0 +1,491 @@
+{
+  "source": "captured from rgit 0.1.0 (json_interface 1) by scripts/capture-fixtures.mjs",
+  "version": {
+    "cli": "0.1.0",
+    "format": 1,
+    "json_interface": 1
+  },
+  "recordings": [
+    {
+      "argv": [
+        "version"
+      ],
+      "file": "version.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "status"
+      ],
+      "file": "status.notrepo.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "init"
+      ],
+      "file": "init.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "status"
+      ],
+      "file": "status.empty.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "status"
+      ],
+      "file": "status.fresh.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "x",
+        "nope.txt"
+      ],
+      "file": "commit.nothing.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "*"
+      ],
+      "file": "commit.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "again"
+      ],
+      "file": "commit.empty.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "branch"
+      ],
+      "file": "branch.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "branch",
+        "feature"
+      ],
+      "file": "branch.create.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "branch",
+        "feature"
+      ],
+      "file": "branch.exists.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "branch",
+        "bad name"
+      ],
+      "file": "branch.invalid.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "switch",
+        "nope"
+      ],
+      "file": "switch.missing.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "switch",
+        "feature"
+      ],
+      "file": "switch.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "feature work",
+        "**"
+      ],
+      "file": "commit.feature.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "switch",
+        "main"
+      ],
+      "file": "switch.main.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "main edit"
+      ],
+      "file": "commit.main.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "merge",
+        "feature"
+      ],
+      "file": "merge.conflicts.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "status"
+      ],
+      "file": "status.merge.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "resolve",
+        "docs/readme.md",
+        "--ours"
+      ],
+      "file": "resolve.ours.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "merge feature"
+      ],
+      "file": "commit.merge.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "log",
+        "-n",
+        "*"
+      ],
+      "file": "log.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "show",
+        "*"
+      ],
+      "file": "show.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "merge",
+        "feature"
+      ],
+      "file": "merge.uptodate.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "status"
+      ],
+      "file": "status.dirty.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "diff"
+      ],
+      "file": "diff.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "restore",
+        "--from",
+        "HEAD",
+        "a.txt"
+      ],
+      "file": "restore.dirty.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "switch",
+        "feature"
+      ],
+      "file": "switch.dirty.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "shelve",
+        "-m",
+        "wip"
+      ],
+      "file": "shelve.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "shelves"
+      ],
+      "file": "shelves.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "unshelve",
+        "*"
+      ],
+      "file": "unshelve.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "restore",
+        "--from",
+        "HEAD",
+        "--force",
+        "a.txt"
+      ],
+      "file": "restore.force.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "revert",
+        "*"
+      ],
+      "file": "revert.dirty.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "cleanup"
+      ],
+      "file": "commit.cleanup.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "revert",
+        "*"
+      ],
+      "file": "revert.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "branch",
+        "-d",
+        "feature"
+      ],
+      "file": "branch.delete.json",
+      "exit": 1
+    },
+    {
+      "argv": [
+        "stats"
+      ],
+      "file": "stats.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "verify"
+      ],
+      "file": "verify.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "gc"
+      ],
+      "file": "gc.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "gc",
+        "--aggressive"
+      ],
+      "file": "gc.aggressive.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "reindex"
+      ],
+      "file": "reindex.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "remote"
+      ],
+      "file": "remote.empty.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "serve",
+        "*",
+        "--listen",
+        "*"
+      ],
+      "file": "serve.ndjson",
+      "exit": 0,
+      "hang": true
+    },
+    {
+      "argv": [
+        "remote",
+        "add",
+        "origin",
+        "*"
+      ],
+      "file": "remote.add.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "remote"
+      ],
+      "file": "remote.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "status"
+      ],
+      "file": "status.noupstream.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "push"
+      ],
+      "file": "push.first.ndjson",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "status"
+      ],
+      "file": "status.synced.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "clone",
+        "*",
+        "*"
+      ],
+      "file": "clone.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "bo work"
+      ],
+      "file": "commit.clone.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "push"
+      ],
+      "file": "push.clone.ndjson",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "commit",
+        "-m",
+        "ann work"
+      ],
+      "file": "commit.ann.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "push"
+      ],
+      "file": "push.rejected.json",
+      "exit": 3
+    },
+    {
+      "argv": [
+        "fetch"
+      ],
+      "file": "fetch.ndjson",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "status"
+      ],
+      "file": "status.behind.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "pull"
+      ],
+      "file": "pull.ndjson",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "push"
+      ],
+      "file": "push.second.ndjson",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "init"
+      ],
+      "file": "init.lonely.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "remote",
+        "add",
+        "origin",
+        "tcp://127.0.0.1:1"
+      ],
+      "file": "remote.add.bad.json",
+      "exit": 0
+    },
+    {
+      "argv": [
+        "push"
+      ],
+      "file": "push.unreachable.json",
+      "exit": 1
+    }
+  ]
+}

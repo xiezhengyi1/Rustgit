@@ -1,0 +1,1 @@
+{"data":{"changes":[{"kind":"modified","path":"a.txt"},{"kind":"added","path":"b.txt"},{"kind":"deleted","path":"old.txt"}],"diff":"--- a/a.txt\n+++ b/a.txt\n@@ -1 +1,2 @@\n hello\n+more\n--- /dev/null\n+++ b/b.txt\n@@ -0,0 +1 @@\n+brand new\n--- a/old.txt\n+++ /dev/null\n@@ -1 +0,0 @@\n-to be removed\n"},"ok":true}

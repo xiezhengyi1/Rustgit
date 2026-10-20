@@ -1,0 +1,3 @@
+{"done":0,"event":"progress","phase":"negotiating","total":7}
+{"done":6,"event":"progress","phase":"uploading","total":6}
+{"data":{"already_applied":false,"stats":{"logical_bytes":623,"objects_already_complete":1,"objects_resumed":0,"objects_transferred":6,"wire_bytes_received":183,"wire_bytes_sent":1112},"up_to_date":false,"updated":[{"generation":3,"new":"b951ca48812e4bd9dc71f246ae10e79bd74804ca83d4d231336dacdee3c2d2d7","ref":"origin/feature"}]},"ok":true}

@@ -1,0 +1,3 @@
+{"event":"progress","phase":"upload","done":12,"total":40,"bytes":123456}
+{"event":"progress","phase":"upload","done":40,"total":40,"bytes":400000}
+{"ok":true,"data":{"objects_sent":40,"bytes_sent":400000,"updated":[{"ref":"main","old":"f28d5b0d6f8be0da8446dabe79044cb9ed0ffa3150a003936155409fe778b885","new":"7ed6a8377b92b49472195f1201af304341daf4abb3643f837eafb38066111f6d"}]}}

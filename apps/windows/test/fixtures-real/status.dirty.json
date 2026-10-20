@@ -1,0 +1,1 @@
+{"data":{"branch":"main","changes":[{"kind":"modified","path":"a.txt"},{"kind":"added","path":"b.txt"},{"kind":"deleted","path":"old.txt"}],"conflicts":[],"head":"949bdda44d3789dca805496404a19dbf207d512b7d1b1cb1d6499668aeb853f1","merge":null,"skipped":[]},"ok":true}

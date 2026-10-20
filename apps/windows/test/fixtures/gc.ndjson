@@ -1,0 +1,2 @@
+{"event":"progress","phase":"repack","done":1,"total":3}
+{"ok":true,"data":{"moved":120,"dropped":14,"freed_bytes":1048576,"repo_bytes_before":9666000,"repo_bytes_after":8617424}}

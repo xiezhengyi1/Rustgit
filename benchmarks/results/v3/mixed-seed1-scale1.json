@@ -1,0 +1,441 @@
+{
+  "workload": "mixed",
+  "seed": 1,
+  "scale": 1.0,
+  "steps": 40,
+  "working_dir": {
+    "apparent": 16285266,
+    "allocated": 16572416
+  },
+  "environment": {
+    "cpu": "Apple M3",
+    "date": "2026-10-20T01:12:53.704346+00:00",
+    "macos": "27.0.1",
+    "memory_bytes": "8589934592",
+    "os": "Darwin 27.0.0 arm64",
+    "rustc": "rustc 1.99.1 (58cf8f9c3 2026-10-13)"
+  },
+  "tools": {
+    "git": {
+      "version": "git version 2.54.0 (Apple Git-157)",
+      "commits": 45,
+      "commit_total": {
+        "wall_s": 4.222023669,
+        "cpu_s": 4.043782999999999,
+        "max_rss_bytes": 9568256
+      },
+      "variants": {
+        "gc_aggressive": {
+          "size": {
+            "apparent": 11730273,
+            "allocated": 11808768
+          },
+          "files": {
+            "COMMIT_EDITMSG": {
+              "apparent": 13,
+              "allocated": 4096
+            },
+            "HEAD": {
+              "apparent": 21,
+              "allocated": 4096
+            },
+            "ORIG_HEAD": {
+              "apparent": 41,
+              "allocated": 4096
+            },
+            "config": {
+              "apparent": 311,
+              "allocated": 4096
+            },
+            "description": {
+              "apparent": 73,
+              "allocated": 4096
+            },
+            "hooks": {
+              "apparent": 26788,
+              "allocated": 65536
+            },
+            "index": {
+              "apparent": 11518,
+              "allocated": 12288
+            },
+            "info": {
+              "apparent": 6681,
+              "allocated": 12288
+            },
+            "logs": {
+              "apparent": 0,
+              "allocated": 0
+            },
+            "objects": {
+              "apparent": 11678340,
+              "allocated": 11689984
+            },
+            "packed-refs": {
+              "apparent": 6487,
+              "allocated": 8192
+            },
+            "refs": {
+              "apparent": 0,
+              "allocated": 0
+            }
+          },
+          "maintenance": {
+            "wall_s": 7.153823042,
+            "cpu_s": 6.911231,
+            "max_rss_bytes": 572211200
+          },
+          "peak_allocated_during_maintenance": 95760384
+        },
+        "gc_default": {
+          "size": {
+            "apparent": 13136228,
+            "allocated": 14176256
+          },
+          "files": {
+            "COMMIT_EDITMSG": {
+              "apparent": 13,
+              "allocated": 4096
+            },
+            "HEAD": {
+              "apparent": 21,
+              "allocated": 4096
+            },
+            "ORIG_HEAD": {
+              "apparent": 41,
+              "allocated": 4096
+            },
+            "config": {
+              "apparent": 311,
+              "allocated": 4096
+            },
+            "description": {
+              "apparent": 73,
+              "allocated": 4096
+            },
+            "hooks": {
+              "apparent": 26788,
+              "allocated": 65536
+            },
+            "index": {
+              "apparent": 11518,
+              "allocated": 12288
+            },
+            "info": {
+              "apparent": 6681,
+              "allocated": 12288
+            },
+            "logs": {
+              "apparent": 0,
+              "allocated": 0
+            },
+            "objects": {
+              "apparent": 13084295,
+              "allocated": 14057472
+            },
+            "packed-refs": {
+              "apparent": 6487,
+              "allocated": 8192
+            },
+            "refs": {
+              "apparent": 0,
+              "allocated": 0
+            }
+          },
+          "maintenance": {
+            "wall_s": 2.2694507500000003,
+            "cpu_s": 2.905653,
+            "max_rss_bytes": 252100608
+          },
+          "peak_allocated_during_maintenance": 98250752
+        },
+        "pre": {
+          "size": {
+            "apparent": 82791141,
+            "allocated": 85098496
+          },
+          "files": {
+            "COMMIT_EDITMSG": {
+              "apparent": 13,
+              "allocated": 4096
+            },
+            "HEAD": {
+              "apparent": 21,
+              "allocated": 4096
+            },
+            "ORIG_HEAD": {
+              "apparent": 41,
+              "allocated": 4096
+            },
+            "config": {
+              "apparent": 311,
+              "allocated": 4096
+            },
+            "description": {
+              "apparent": 73,
+              "allocated": 4096
+            },
+            "hooks": {
+              "apparent": 26788,
+              "allocated": 65536
+            },
+            "index": {
+              "apparent": 11518,
+              "allocated": 12288
+            },
+            "info": {
+              "apparent": 240,
+              "allocated": 4096
+            },
+            "logs": {
+              "apparent": 31633,
+              "allocated": 450560
+            },
+            "objects": {
+              "apparent": 82716157,
+              "allocated": 84111360
+            },
+            "refs": {
+              "apparent": 4346,
+              "allocated": 434176
+            }
+          },
+          "maintenance": {
+            "wall_s": 0.0,
+            "cpu_s": 0.0,
+            "max_rss_bytes": 0
+          },
+          "peak_allocated_during_maintenance": 85098496
+        }
+      },
+      "switch_to_oldest": {
+        "wall_s": 0.054661,
+        "cpu_s": 0.052851,
+        "max_rss_bytes": 9289728
+      },
+      "switch_back": {
+        "wall_s": 0.059087084,
+        "cpu_s": 0.057074,
+        "max_rss_bytes": 9322496
+      },
+      "objects_before_100_branches": 553,
+      "objects_after_100_branches": 553,
+      "repo_bytes_before_100_branches": 82771941,
+      "repo_bytes_after_100_branches": 82791141,
+      "verify_ok": null,
+      "transfer": {
+        "gc_aggressive": {
+          "initial_upload_bytes": 11655466,
+          "initial_download_bytes": 11663311,
+          "incremental_back": 10,
+          "incremental_commits": 11,
+          "incremental_upload_bytes": 539372,
+          "incremental_download_bytes": 539601,
+          "initial_download_request_bytes": 528,
+          "incremental_download_request_bytes": 1251,
+          "initial_upload_s": 0.034911833,
+          "initial_download_s": 0.55414275,
+          "incremental_upload_s": 0.084535416,
+          "incremental_download_s": 0.567169125,
+          "initial_upload_logical_bytes": 0,
+          "notes": [
+            "git download bytes = what upload-pack wrote to the client (counted through a tee wrapper); git upload = `git bundle create` size"
+          ]
+        },
+        "gc_default": {
+          "initial_upload_bytes": 13061455,
+          "initial_download_bytes": 13069410,
+          "incremental_back": 10,
+          "incremental_commits": 11,
+          "incremental_upload_bytes": 556779,
+          "incremental_download_bytes": 557008,
+          "initial_download_request_bytes": 528,
+          "incremental_download_request_bytes": 1251,
+          "initial_upload_s": 0.037434834,
+          "initial_download_s": 0.581548625,
+          "incremental_upload_s": 0.095940625,
+          "incremental_download_s": 0.565276625,
+          "initial_upload_logical_bytes": 0,
+          "notes": [
+            "git download bytes = what upload-pack wrote to the client (counted through a tee wrapper); git upload = `git bundle create` size"
+          ]
+        },
+        "pre": {
+          "initial_upload_bytes": 12689904,
+          "initial_download_bytes": 12697463,
+          "incremental_back": 10,
+          "incremental_commits": 11,
+          "incremental_upload_bytes": 537573,
+          "incremental_download_bytes": 537802,
+          "initial_download_request_bytes": 528,
+          "incremental_download_request_bytes": 1251,
+          "initial_upload_s": 1.756330958,
+          "initial_download_s": 2.802867167,
+          "incremental_upload_s": 0.313644583,
+          "incremental_download_s": 0.712118791,
+          "initial_upload_logical_bytes": 0,
+          "notes": [
+            "git download bytes = what upload-pack wrote to the client (counted through a tee wrapper); git upload = `git bundle create` size"
+          ]
+        }
+      }
+    },
+    "rgit": {
+      "version": "rgit 0.1.0",
+      "commits": 45,
+      "commit_total": {
+        "wall_s": 2.437704039,
+        "cpu_s": 2.213367,
+        "max_rss_bytes": 35389440
+      },
+      "variants": {
+        "gc_aggressive": {
+          "size": {
+            "apparent": 12103968,
+            "allocated": 12873728
+          },
+          "files": {
+            "FORMAT": {
+              "apparent": 59,
+              "allocated": 4096
+            },
+            "index.sqlite": {
+              "apparent": 90112,
+              "allocated": 90112
+            },
+            "local.sqlite": {
+              "apparent": 14336,
+              "allocated": 16384
+            },
+            "meta.sqlite": {
+              "apparent": 21504,
+              "allocated": 24576
+            },
+            "objects": {
+              "apparent": 11977957,
+              "allocated": 12738560
+            }
+          },
+          "maintenance": {
+            "wall_s": 2.368442875,
+            "cpu_s": 2.332354,
+            "max_rss_bytes": 44335104
+          },
+          "peak_allocated_during_maintenance": 25698304
+        },
+        "pre": {
+          "size": {
+            "apparent": 12812855,
+            "allocated": 12824576
+          },
+          "files": {
+            "FORMAT": {
+              "apparent": 59,
+              "allocated": 4096
+            },
+            "index.sqlite": {
+              "apparent": 90112,
+              "allocated": 90112
+            },
+            "local.sqlite": {
+              "apparent": 14336,
+              "allocated": 16384
+            },
+            "meta.sqlite": {
+              "apparent": 21504,
+              "allocated": 24576
+            },
+            "objects": {
+              "apparent": 12686844,
+              "allocated": 12689408
+            }
+          },
+          "maintenance": {
+            "wall_s": 0.0,
+            "cpu_s": 0.0,
+            "max_rss_bytes": 0
+          },
+          "peak_allocated_during_maintenance": 12824576
+        }
+      },
+      "switch_to_oldest": {
+        "wall_s": 0.045886,
+        "cpu_s": 0.04505,
+        "max_rss_bytes": 10829824
+      },
+      "switch_back": {
+        "wall_s": 0.06802175,
+        "cpu_s": 0.067287,
+        "max_rss_bytes": 11894784
+      },
+      "objects_before_100_branches": 783,
+      "objects_after_100_branches": 783,
+      "repo_bytes_before_100_branches": 12803639,
+      "repo_bytes_after_100_branches": 12812855,
+      "verify_ok": true,
+      "transfer": {
+        "gc_aggressive": {
+          "initial_upload_bytes": 11603310,
+          "initial_download_bytes": 11582895,
+          "incremental_back": 10,
+          "incremental_commits": 11,
+          "incremental_upload_bytes": 499210,
+          "incremental_download_bytes": 500274,
+          "initial_download_request_bytes": 117273,
+          "incremental_download_request_bytes": 5774,
+          "initial_upload_s": 3.698241125,
+          "initial_download_s": 1.9521385,
+          "incremental_upload_s": 0.731763875,
+          "incremental_download_s": 0.544197917,
+          "initial_upload_logical_bytes": 83627490,
+          "notes": [
+            "rgit bytes are measured on the connection (frames, per-batch zstd, acknowledgements); objects are sent whole (no cross-object deltas on the wire yet)"
+          ]
+        },
+        "pre": {
+          "initial_upload_bytes": 11603310,
+          "initial_download_bytes": 11582895,
+          "incremental_back": 10,
+          "incremental_commits": 11,
+          "incremental_upload_bytes": 499210,
+          "incremental_download_bytes": 500274,
+          "initial_download_request_bytes": 117273,
+          "incremental_download_request_bytes": 5774,
+          "initial_upload_s": 3.647985791,
+          "initial_download_s": 2.011938,
+          "incremental_upload_s": 0.74187275,
+          "incremental_download_s": 0.519158667,
+          "initial_upload_logical_bytes": 83627490,
+          "notes": [
+            "rgit bytes are measured on the connection (frames, per-batch zstd, acknowledgements); objects are sent whole (no cross-object deltas on the wire yet)"
+          ]
+        }
+      }
+    }
+  },
+  "comparison": {
+    "rgit_commit_cpu_over_git": 0.5473505873089631,
+    "rgit_over_git_gc_aggressive_allocated": 1.0901838362816512,
+    "rgit_over_git_gc_aggressive_apparent": 1.0318573148297572,
+    "rgit_over_git_gc_default_allocated": 0.9081190407396706,
+    "rgit_over_git_unmaintained_allocated": 0.1507027339237582,
+    "transfer_incremental_download_rgit_vs_git_gc_aggressive": 0.9271183707961994,
+    "transfer_incremental_download_rgit_vs_git_gc_default": 0.8981450894780686,
+    "transfer_incremental_download_rgit_vs_git_pre": 0.9302196719238679,
+    "transfer_incremental_upload_rgit_vs_git_gc_aggressive": 0.9255393309255949,
+    "transfer_incremental_upload_rgit_vs_git_gc_default": 0.8966034997728003,
+    "transfer_incremental_upload_rgit_vs_git_pre": 0.9286366688803195,
+    "transfer_initial_download_rgit_vs_git_gc_aggressive": 0.993105216863376,
+    "transfer_initial_download_rgit_vs_git_gc_default": 0.8862599765406396,
+    "transfer_initial_download_rgit_vs_git_pre": 0.9122212051336555,
+    "transfer_initial_upload_rgit_vs_git_gc_aggressive": 0.9955251896406373,
+    "transfer_initial_upload_rgit_vs_git_gc_default": 0.8883627436606412,
+    "transfer_initial_upload_rgit_vs_git_pre": 0.9143733475052294
+  },
+  "notes": [
+    "Both tools replay identical file contents, commits, branches and merges.",
+    "Sizes count every file in .git / .rgit including indexes, SQLite files and caches.",
+    "git gc_aggressive = reflog expire + gc --aggressive --prune=now (window 250, depth 50); rgit gc_aggressive = gc --aggressive.",
+    "Transfer: git = `git bundle` size and pack bytes written by clone/fetch over file://; rgit = bytes on the TCP connection of `rgit push` / `rgit fetch` against a local `rgit serve`. Only branch main is transferred; the increment is the last N first-parent commits."
+  ]
+}

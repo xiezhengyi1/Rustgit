@@ -1,0 +1,1 @@
+{"error":{"code":"dirty_working_tree","message":"uncommitted changes would be overwritten: a.txt","paths":["a.txt"]},"ok":false}

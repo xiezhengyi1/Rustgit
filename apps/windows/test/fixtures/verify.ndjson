@@ -1,0 +1,3 @@
+{"event":"progress","phase":"objects","done":100,"total":412}
+{"event":"progress","phase":"objects","done":412,"total":412}
+{"ok":true,"data":{"objects_checked":412,"commits":8,"problems":[]}}

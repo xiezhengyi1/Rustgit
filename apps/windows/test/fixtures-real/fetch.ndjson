@@ -1,0 +1,3 @@
+{"done":3,"event":"progress","phase":"downloading","total":3}
+{"branch":"feature","event":"relation","state":"diverged"}
+{"data":{"state":"diverged","stats":{"logical_bytes":269,"objects_already_complete":0,"objects_resumed":0,"objects_transferred":3,"wire_bytes_received":526,"wire_bytes_sent":461},"up_to_date":false,"updated":[{"new":"faadef589282e9d78e2efcbc260aad5394d1a0fb5f1b0c59495ef8ff229f536a","old":"74dcf52c21af6a0c464e80a1beaab697cf3adfd52d4c88e3dea3301e3eded8c2","ref":"origin/feature"}]},"ok":true}

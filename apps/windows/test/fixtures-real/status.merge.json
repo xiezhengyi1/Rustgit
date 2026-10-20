@@ -1,0 +1,1 @@
+{"data":{"branch":"main","changes":[{"kind":"modified","path":"docs/readme.md"},{"kind":"added","path":"feature.txt"}],"conflicts":[{"kind":"content","path":"docs/readme.md","resolved":false}],"head":"1e5151cbbe7e2dec39be84ab9dff9d18bbe1b57130acca15d0113144fffa1b34","merge":{"kind":"merge","label":"feature"},"skipped":[]},"ok":true}

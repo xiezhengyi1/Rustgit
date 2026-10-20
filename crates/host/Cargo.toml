@@ -1,0 +1,23 @@
+[package]
+name = "rustgit-host"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+rust-version.workspace = true
+
+[dependencies]
+blake3 = "1.8.7"
+rusqlite = { version = "0.40.2", features = ["bundled"] }
+rustgit-core = { path = "../core" }
+rustgit-protocol = { path = "../protocol" }
+rustgit-store = { path = "../store" }
+thiserror = "2.0.21"
+zeroize = "1"
+
+[dev-dependencies]
+tempfile = "3.27.0"
+
+# Platform key storage (macOS Keychain, Windows Credential Manager). Other platforms only get the
+# explicit, opt-in file store.
+[target.'cfg(any(target_os = "macos", windows))'.dependencies]
+keyring = "4"

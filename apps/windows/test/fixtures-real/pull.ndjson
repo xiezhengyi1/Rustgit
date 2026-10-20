@@ -1,0 +1,2 @@
+{"branch":"feature","event":"relation","state":"diverged"}
+{"data":{"fetch":{"state":"diverged","stats":{"logical_bytes":0,"objects_already_complete":0,"objects_resumed":0,"objects_transferred":0,"wire_bytes_received":130,"wire_bytes_sent":75},"up_to_date":true,"updated":[]},"merge":{"already_up_to_date":false,"commit":"b951ca48812e4bd9dc71f246ae10e79bd74804ca83d4d231336dacdee3c2d2d7","conflicts":[],"fast_forward":false}},"ok":true}
